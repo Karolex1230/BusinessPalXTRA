@@ -108,6 +108,77 @@ header {
   box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
+/* Mobile Responsive Adjustments */
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+  nav {
+    margin-top: 12px;
+  }
+  nav a {
+    margin-left: 0;
+    margin-right: 16px;
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  .hero-content p.animated-text {
+    font-size: 1.2rem;
+  }
+  .hero-content div button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .services, .pricing, .process, .rebranding-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .process-step div {
+    font-size: 1.5rem;
+  }
+  #contactForm {
+    grid-template-columns: 1fr; /* stack inputs vertically */
+  }
+  #contactForm textarea, #contactForm input, #contactForm select, #contactForm button {
+    width: 100%;
+  }
+  aside.card {
+    padding: 24px;
+  }
+  .rebranding-grid .card, .pricing .plan.card, .process-step.card {
+    padding: 18px;
+  }
+  .hero {
+    height: 80vh;
+  }
+  .scroll-cue {
+    bottom: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+  .hero-content p.animated-text {
+    font-size: 1rem;
+  }
+  .logo-text div:last-child {
+    font-size: 10px;
+  }
+  .process-step div {
+    font-size: 1.3rem;
+  }
+  .card {
+    padding: 14px;
+  }
+}
 
 
 </style>
