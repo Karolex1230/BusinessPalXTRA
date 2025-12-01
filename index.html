@@ -223,9 +223,10 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- Hero -->
 <section class="hero" style="position:relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center;">
   <!-- Background Video -->
-  <video id="bgVideo" autoplay muted loop playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2;">
-    <source src="Bakcground.mp4" type="video/mp4">
-  </video>
+ <video id="bgVideo" autoplay muted playsinline loop preload="auto">
+  <source src="Bakcground.mp4" type="video/mp4">
+</video>
+
 
   <!-- Gradient Overlay -->
   <div style="position:absolute; top:0; left:0; width:100%; height:100%; 
@@ -434,6 +435,14 @@ s0.parentNode.insertBefore(s1,s0);
 </div>
 
 <script>
+const video = document.getElementById('bgVideo');
+document.addEventListener('DOMContentLoaded', () => {
+  video.play().catch(() => {
+    // autoplay blocked, wait for user gesture
+    document.body.addEventListener('click', () => video.play(), { once: true });
+  });
+});
+
 // Hero animated text
 const animatedText = document.querySelectorAll('.animated-text span');
 let index = 0;
