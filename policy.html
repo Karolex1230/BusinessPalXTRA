@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BusinessPal Policies & Declaration of Work</title>
+
+<meta name="description" content="BusinessPal policies, terms, and declaration of work for web design and website maintenance services across Northern Ireland and the UK.">
+
+<style>
+:root{
+  --accent:#2563eb;
+  --accent2:#06b6d4;
+  --bg:#0b0b0b;
+  --card:#161616;
+  --muted:#9ca3af;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:#f1f5f9;
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+.container{max-width:1000px;margin:auto;padding:28px}
+
+/* Header */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#000;
+  box-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 28px;
+}
+.logo{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.logo img{
+  width:44px;
+  height:44px;
+  border-radius:8px;
+}
+.logo strong{font-size:1.1rem}
+
+nav a{
+  margin-left:20px;
+  font-weight:600;
+}
+nav a:hover{color:var(--accent)}
+
+/* Mobile menu */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  cursor:pointer;
+}
+
+.mobile-nav{
+  position:fixed;
+  top:64px;
+  left:0;
+  width:100%;
+  height:calc(100vh - 64px);
+  background:#000;
+  display:none;
+  flex-direction:column;
+  z-index:999;
+}
+.mobile-nav a{
+  padding:18px 28px;
+  border-bottom:1px solid #222;
+  font-weight:600;
+}
+
+@media(max-width:768px){
+  nav{display:none}
+  .menu-toggle{display:block}
+  .mobile-nav.open{display:flex}
+}
+
+/* Content */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:40px;
+  border:1px solid #262626;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+
+h1{
+  font-size:2.6rem;
+  margin-bottom:12px;
+}
+h2{
+  margin-top:36px;
+  font-size:1.6rem;
+}
+p{margin:14px 0}
+ul{margin-left:20px;color:var(--muted)}
+
+.btn{
+  display:inline-block;
+  margin-top:24px;
+  background:var(--accent);
+  padding:12px 20px;
+  border-radius:10px;
+  font-weight:700;
+}
+.btn:hover{background:var(--accent2)}
+
+footer{
+  text-align:center;
+  padding:40px 0;
+  color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="BP.png" alt="BusinessPal logo">
+      <div>
+        <strong>BusinessPal</strong><br>
+        <small style="color:var(--muted)">Web Design Northern Ireland & UK</small>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#subscription">Support</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </div>
+</header>
+
+<div id="mobileNav" class="mobile-nav">
+  <a href="index.html#services" onclick="toggleMenu()">Services</a>
+  <a href="index.html#process" onclick="toggleMenu()">Process</a>
+  <a href="index.html#subscription" onclick="toggleMenu()">Support</a>
+  <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<div class="container">
+
+  <section class="card">
+    <h1>Policies & Declaration of Work</h1>
+    <p class="muted">
+      This document applies to all services provided by BusinessPal across Northern Ireland and the United Kingdom.
+    </p>
+
+    <a href="index.html" class="btn">← Back to Home</a>
+
+    <h2>1. Business Overview</h2>
+    <p>
+      BusinessPal is a web design and website development service based in Northern Ireland,
+      providing digital services to businesses across the UK. Services may include website design,
+      development, subscriptions, and ongoing maintenance.
+    </p>
+
+    <h2>2. Scope of Work</h2>
+    <p>
+      All services are provided based on an agreed scope confirmed in writing prior to commencement.
+      This may include, but is not limited to:
+    </p>
+    <ul>
+      <li>Custom or WordPress website development</li>
+      <li>Website redesigns or improvements</li>
+      <li>Subscription-based website services</li>
+      <li>Ongoing maintenance and content updates</li>
+      <li>Basic SEO and performance configuration</li>
+    </ul>
+
+    <h2>3. Free Mockups & Previews</h2>
+    <p>
+      BusinessPal may provide free mockups or previews prior to project approval.
+      These materials remain the intellectual property of BusinessPal and may not be reused,
+      distributed, or developed without written permission unless the project proceeds.
+    </p>
+
+    <h2>4. Subscription Services</h2>
+    <p>
+      Subscription-based services are billed monthly and may include development, updates,
+      and support as agreed. BusinessPal reserves the right to amend or terminate subscriptions
+      with reasonable notice where necessary.
+    </p>
+
+    <h2>5. Maintenance & Support</h2>
+    <p>
+      Maintenance services cover reasonable updates and fixes related to the original build.
+      Major changes, new features, or third-party issues fall outside standard maintenance
+      and may require a separate agreement.
+    </p>
+
+    <h2>6. Client Responsibilities</h2>
+    <p>
+      Clients are responsible for supplying accurate content, ensuring ownership or licensing
+      of all provided materials, and reviewing work in a timely manner.
+      Delays caused by missing content or feedback may affect timelines.
+    </p>
+
+    <h2>7. Payments & Fees</h2>
+    <p>
+      All pricing is agreed in advance. Payments must be made within agreed terms.
+      Late or missed payments may result in suspension of services.
+      All prices are in GBP (£) unless stated otherwise.
+    </p>
+
+    <h2>8. Intellectual Property</h2>
+    <p>
+      Upon full payment, clients receive rights to the final delivered website.
+      BusinessPal retains ownership of internal tools, reusable code, and the right
+      to display completed work in portfolios and promotional material.
+    </p>
+
+    <h2>9. Data Protection & GDPR</h2>
+    <p>
+      BusinessPal processes personal data in accordance with UK GDPR principles.
+      Clients remain responsible for ensuring their website content, privacy notices,
+      and data handling practices are compliant with applicable regulations.
+    </p>
+
+    <h2>10. Liability & Limitations</h2>
+    <p>
+      BusinessPal provides services in good faith and to a professional standard.
+      No guarantees are made regarding business performance, search rankings,
+      revenue, or uninterrupted service. Liability is limited to the value of services provided.
+    </p>
+
+    <h2>11. Declaration of Work</h2>
+    <p>
+      By engaging BusinessPal, the client confirms they have read, understood,
+      and accepted these policies. This document constitutes a professional declaration
+      governing the working relationship.
+    </p>
+
+    <a href="index.html" class="btn">← Back to Home</a>
+  </section>
+
+</div>
+
+<footer>
+  © <span id="year"></span> BusinessPal — Northern Ireland & UK
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleMenu(){
+  const menu = document.getElementById('mobileNav');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+</script>
+
+</body>
+</html>
+

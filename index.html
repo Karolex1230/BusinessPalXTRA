@@ -9,12 +9,13 @@
 
 <style>
 :root{
-  --accent:#2563eb;
-  --accent2:#06b6d4;
-  --bg:#0b0b0b;
-  --card:#161616;
-  --muted:#9ca3af;
+  --accent:#3b82f6;
+  --accent2:#22d3ee;
+  --bg:#0a0a0a;
+  --card:#141414;
+  --muted:#a1a1aa;
 }
+
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -56,27 +57,59 @@ nav a:hover{color:var(--accent)}
   background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.9));
   z-index:-1;
 }
-.hero h1{font-size:3.8rem;font-weight:900;margin:0}
-.hero p{font-size:1.4rem;color:#e5e7eb;margin-top:12px}
+.hero h1{
+  font-size:clamp(2.6rem, 5vw, 4rem);
+  font-weight:900;
+  letter-spacing:-0.02em;
+}
+
+.hero p{
+  font-size:1.25rem;
+  max-width:720px;
+  margin:16px auto 0;
+  color:#e5e7eb;
+}
+
+
 .btn{
-  background:var(--accent);color:#fff;
-  padding:14px 22px;border-radius:12px;
-  font-weight:700;border:0;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  padding:14px 26px;
+  border-radius:14px;
+  font-weight:700;
+  border:0;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(59,130,246,.35);
+  transition:.25s ease;
 }
-.btn:hover{background:var(--accent2)}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 40px rgba(34,211,238,.45);
+}
+
 .btn.ghost{
-  background:transparent;border:2px solid var(--accent);
+  background:transparent;
+  border:2px solid var(--accent);
   color:var(--accent);
+  box-shadow:none;
 }
+
 
 /* Sections */
 section{margin-top:64px}
 .card{
-  background:var(--card);
-  border-radius:16px;
-  padding:32px;
+  background:linear-gradient(180deg,#161616,#101010);
+  border-radius:18px;
+  padding:34px;
   border:1px solid #262626;
-  box-shadow:0 8px 24px rgba(0,0,0,.45);
+  box-shadow:0 10px 40px rgba(0,0,0,.55);
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
 }
 .grid{display:grid;gap:24px}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -135,6 +168,34 @@ footer{
   display:flex;
   opacity:1;
   transform:translateY(0);
+}
+.site-footer{
+  text-align:center;
+  padding:48px 20px;
+  border-top:1px solid #222;
+  background:#000;
+}
+
+.footer-links{
+  margin-bottom:12px;
+}
+
+.footer-links a{
+  color:var(--accent);
+  font-weight:600;
+  padding:8px 14px;
+  border-radius:8px;
+  transition:.25s ease;
+}
+
+.footer-links a:hover{
+  background:rgba(37,99,235,.15);
+  color:#fff;
+}
+
+.footer-copy{
+  font-size:.9rem;
+  color:var(--muted);
 }
 
 </style>
@@ -349,10 +410,17 @@ footer{
 
 </section>
 
-<footer>
-  © <span id="year"></span> BusinessPal —
-  Web Design & Website Maintenance in Northern Ireland and the UK.
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="policy.html">Policies & Terms</a>
+  </div>
+
+  <div class="footer-copy">
+    © <span id="year"></span> BusinessPal —
+    Web Design & Website Maintenance in Northern Ireland and the UK.
+  </div>
 </footer>
+
 
 </div>
 
