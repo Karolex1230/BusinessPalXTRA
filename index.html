@@ -92,6 +92,34 @@ footer{
   padding:40px 0;
   color:#fff;
 }
+/* Mobile Burger Menu */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  cursor:pointer;
+  color:white;
+}
+
+.mobile-nav{
+  display:none;
+  flex-direction:column;
+  background:#000;
+  border-top:1px solid #222;
+}
+
+.mobile-nav a{
+  padding:16px 28px;
+  border-bottom:1px solid #222;
+  font-weight:600;
+}
+
+/* Mobile only */
+@media(max-width:768px){
+  nav{display:none}
+  .menu-toggle{display:block}
+  .mobile-nav.open{display:flex}
+}
+
 </style>
 </head>
 
@@ -106,14 +134,24 @@ footer{
         <small style="color:var(--muted)">Web Design Northern Ireland & UK</small>
       </div>
     </div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#subscription">Support</a>
-      <a href="#contact">Contact</a>
-    </nav>
+   <nav>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#subscription">Support</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+
   </div>
 </header>
+<div id="mobileNav" class="mobile-nav">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#subscription" onclick="toggleMenu()">Support</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -314,6 +352,10 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 reveals.forEach(r => observer.observe(r));
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
 </script>
 
 </body>
