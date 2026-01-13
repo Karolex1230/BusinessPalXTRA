@@ -1,511 +1,326 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BusinessPal — Website & WordPress for Small Business</title>
-<meta name="description" content="BusinessPal builds websites: custom code or WordPress. Monthly plans and build service with a live pitch before launch." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BusinessPal — Web Design Northern Ireland & UK</title>
+
+<meta name="description" content="BusinessPal provides professional web design, WordPress websites, and website maintenance for small businesses across Northern Ireland and the UK. Free mockups. Subscription options available.">
+
 <style>
-:root{--accent:#2563eb;--accent2:#06b6d4;--bg:#0d0d0d;--card:#1a1a1a;--muted:#9ca3af;--highlight:#facc15;}
-*{box-sizing:border-box}html,body{height:100%}body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.5;margin:0;background:var(--bg);color:#f1f5f9;text-decoration:none;scroll-behavior:smooth}
-.container{max-width:1200px;margin:0 auto;padding:28px}
-header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-.logo{display:flex;align-items:center;gap:12px}.logo-mark{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:white;font-weight:700;font-size:20px}.logo-text div:first-child{font-weight:800}.logo-text div:last-child{font-size:12px;color:var(--muted)}
-nav a {
-  margin-left: 18px;
-  font-weight: 600;
-  color: white; /* changed from var(--muted) */
-  transition: color 0.3s;
+:root{
+  --accent:#2563eb;
+  --accent2:#06b6d4;
+  --bg:#0b0b0b;
+  --card:#161616;
+  --muted:#9ca3af;
 }
-nav a:hover {
-  color: var(--accent);
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:#f1f5f9;
+  line-height:1.6;
 }
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:28px}
 
-.hero{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
-.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
-.hero-content{text-align:center;position:relative;z-index:2}
-.hero-content h1{font-size:3.2rem;font-weight:800;margin:0;text-shadow:0 3px 10px rgba(0,0,0,0.7)}
-.hero-content p{margin-top:12px;font-size:1.3rem;color:#f1f5f9}
-.animated-text span {
-  color: var(--accent); /* blue text */
-  font-weight: 700;
-  display: inline-block;
-  transition: opacity 0.5s ease;
-
-  -webkit-text-stroke: 1px black; /* black outline */
-  text-stroke: 1px black; /* for browsers that support it */
+/* Header */
+header{
+  position:sticky;top:0;z-index:100;
+  background:#000;
+  box-shadow:0 2px 8px rgba(0,0,0,.6);
 }
+.header-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 28px;
+}
+.logo{display:flex;gap:12px;align-items:center}
+.logo img{width:44px;height:44px;border-radius:8px}
+.logo strong{font-size:1.1rem}
+nav a{margin-left:20px;font-weight:600;color:#fff}
+nav a:hover{color:var(--accent)}
 
-
-.scroll-cue{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:1rem;animation:bounce 1.5s infinite}
-@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
-.btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer;transition:all .3s}
+/* Hero */
+.hero{
+  position:relative;height:100vh;display:flex;
+  align-items:center;justify-content:center;text-align:center;
+}
+.hero video{
+  position:fixed;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:-2;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.9));
+  z-index:-1;
+}
+.hero h1{font-size:3.8rem;font-weight:900;margin:0}
+.hero p{font-size:1.4rem;color:#e5e7eb;margin-top:12px}
+.btn{
+  background:var(--accent);color:#fff;
+  padding:14px 22px;border-radius:12px;
+  font-weight:700;border:0;cursor:pointer;
+}
 .btn:hover{background:var(--accent2)}
-.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.5);border:1px solid #2a2a2a;color:#f1f5f9;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,0.55)}
-.services,.pricing,.process,.rebranding-grid{display:grid;gap:18px}
-.services{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:26px}
-.pricing{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:22px}
-.process{grid-template-columns:repeat(3,1fr);margin-top:26px}
-.process-step{padding:22px;border-radius:14px;transition:transform .35s ease,box-shadow .35s ease;opacity:0;animation:fadeUp 0.9s ease forwards}
-.process-step:nth-child(1){animation-delay:0.1s}.process-step:nth-child(2){animation-delay:0.25s}.process-step:nth-child(3){animation-delay:0.4s}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:translateY(0)}}
-footer{margin-top:34px;padding:26px 0;text-align:center;color:var(--muted)}
-.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
-.modal{max-width:900px;width:100%;border-radius:16px;overflow:hidden;animation:modalFade 0.3s ease}
-@keyframes modalFade{from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0)}}
-.pitch-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:12px}
-.pitch-carousel img{scroll-snap-align:start;border-radius:10px;transition:transform .3s}
-.pitch-carousel img:hover{transform:scale(1.05)}
-.rebranding-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:12px}
-.logo-mark {
-  width:44px;
-  height:44px;
-  border-radius:8px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:grid;
-  place-items:center;
-  color:white;
-  font-weight:700;
-  font-size:20px;
+.btn.ghost{
+  background:transparent;border:2px solid var(--accent);
+  color:var(--accent);
 }
-.logo-mark img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
+
+/* Sections */
+section{margin-top:64px}
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:32px;
+  border:1px solid #262626;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
 }
-#about {
-  background: linear-gradient(135deg, #1e1e2f, #0d0d0d);
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-}
-footer a {
-  color: #ffffff;
-  text-decoration: underline; /* optional */
-}
-footer {
-  margin-top:34px;
-  padding:26px 0;
+.grid{display:grid;gap:24px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+h2{font-size:2.2rem;margin-bottom:12px}
+p.muted{color:var(--muted)}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:.8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{
   text-align:center;
-  color: #ffffff; /* changed from var(--muted) */
+  padding:40px 0;
+  color:#fff;
 }
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 28px; /* match your container padding */
-  width: 100%;         /* full width */
-  background-color: #000000; /* black background */
-  position: sticky;    /* stick at top */
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-}
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 1024px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
-  nav {
-    margin-top: 12px;
-  }
-  nav a {
-    margin-left: 0;
-    margin-right: 16px;
-    display: inline-block;
-    font-size: 0.9rem;
-  }
-  .hero-content h1 {
-    font-size: 3rem;
-  }
-  .hero-content p.animated-text {
-    font-size: 1.2rem;
-  }
-  .hero-content div button {
-    width: 100%;
-    margin-bottom: 8px;
-  }
-  .services, .pricing, .process, .rebranding-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .process-step div {
-    font-size: 1.5rem;
-  }
-  #contactForm {
-    grid-template-columns: 1fr; /* stack inputs vertically */
-  }
-  #contactForm textarea, #contactForm input, #contactForm select, #contactForm button {
-    width: 100%;
-  }
-  aside.card {
-    padding: 24px;
-  }
-  .rebranding-grid .card, .pricing .plan.card, .process-step.card {
-    padding: 18px;
-  }
-  .hero {
-    height: 80vh;
-  }
-  .scroll-cue {
-    bottom: 12px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Extra Small Screens */
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 2.4rem;
-  }
-  .hero-content p.animated-text {
-    font-size: 1rem;
-  }
-  .logo-text div:last-child {
-    font-size: 10px;
-  }
-  .process-step div {
-    font-size: 1.3rem;
-  }
-  .card {
-    padding: 14px;
-  }
-}
-
-
 </style>
 </head>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/692dc48d6198c31982b7dd38/1jbdcfifc';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-<body>
-<header>
-<div class="logo">
-<div class="logo-mark">
-  <img src="BP.png" alt="BusinessPal Logo" style="width:44px; height:44px; border-radius:8px; object-fit:cover;">
-</div>
 
-<div class="logo-text">
-<div>BusinessPal</div>
-<div>Websites & WordPress for small business</div>
-</div>
-</div>
-<nav>
-<a href="#services">Services</a>
-<a href="#pricing">Pricing</a>
-<a href="#process">Process</a>
-<a href="#contact">Contact</a>
-</nav>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="BP.png" alt="BusinessPal logo">
+      <div>
+        <strong>BusinessPal</strong><br>
+        <small style="color:var(--muted)">Web Design Northern Ireland & UK</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#subscription">Support</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="Bakcground.mp4" type="video/mp4">
+  </video>
+  <div>
+    <h1>Websites That Work for Your Business</h1>
+    <p>
+      Professional web design and website development for businesses across
+      <strong>Northern Ireland and the UK</strong>.
+    </p>
+    <div style="margin-top:28px">
+      <a href="#contact"><button class="btn">Get a Free Quote</button></a>
+      <a href="#services"><button class="btn ghost">Our Services</button></a>
+    </div>
+  </div>
+</section>
+
 <div class="container">
 
-<main>
+<!-- ABOUT -->
+<section id="about" class="card reveal">
+  <h2>About BusinessPal</h2>
 
+  <p>
+    BusinessPal is a web design and development service based in
+    <strong>Northern Ireland</strong>, working with small businesses and growing
+    companies across the <strong>UK</strong>.
+  </p>
 
-<!-- Hero -->
-<section class="hero" style="position:relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center;">
-  <!-- Background Video -->
- <video id="bgVideo" autoplay muted playsinline loop preload="auto">
-  <source src="Bakcground.mp4" type="video/mp4">
-</video>
+  <p>
+    We build fast, modern, and professional websites designed to help businesses
+    look credible online and be found through search engines.
+    Every website is crafted with performance, usability, and SEO best practices
+    at its core.
+  </p>
 
+  <p>
+    Before you commit, we provide <strong>free website mockups</strong> so you can
+    clearly see how your site may look and function.
+    No pressure, no obligation — just clarity and confidence.
+  </p>
 
-  <!-- Gradient Overlay -->
-  <div style="position:absolute; top:0; left:0; width:100%; height:100%; 
-              background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%);
-              z-index:-1;"></div>
-
-  <!-- Hero Content -->
-  <div class="hero-content" style="position:relative; z-index:2; color:white; max-width:900px; padding:20px;">
-    <h1 style="font-size:4rem; font-weight:900; margin:0; text-shadow: 0 4px 15px rgba(0,0,0,0.7);">BusinessPal</h1>
-    <p class="animated-text" style="font-size:1.5rem; margin-top:16px; font-weight:700; color:#2563eb; text-shadow: 2px 2px 0 #000;">
-      <span>Websites</span> - <span>WordPress</span> - <span>Branding</span> - <span>Rebranding</span>
-    </p>
-    <div style="margin-top:24px;">
-      <button class="btn" style="margin-right:12px;">Get a Quote</button>
-      <button class="btn ghost">Learn More</button>
-    </div>
-  </div>
-
-  <!-- Scroll Cue -->
-  <div class="scroll-cue" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:#9ca3af; font-size:1rem; animation:bounce 1.5s infinite;">↓ Scroll to see services</div>
+  <p>
+    Whether you need a new website, a redesign, or ongoing website maintenance,
+    BusinessPal offers friendly, reliable support for businesses in Northern Ireland
+    and throughout the UK.
+  </p>
 </section>
 
-<style>
-  @keyframes bounce{
-    0%,100%{transform:translate(-50%,0)}
-    50%{transform:translate(-50%,10px)}
-  }
+<!-- SERVICES -->
+<section id="services">
+  <h2 style="text-align:center">Our Services</h2>
+  <p class="muted" style="text-align:center">
+    Professional web design services tailored for businesses in Northern Ireland and the UK.
+  </p>
 
-  /* Animated text opacity loop */
-  .animated-text span{
-    opacity:0;
-    display:inline-block;
-    transition:opacity 0.5s ease;
-  }
-</style>
-
-<script>
-  // Hero animated text
-  const animatedText = document.querySelectorAll('.animated-text span');
-  let index = 0;
-  setInterval(() => {
-    animatedText.forEach(el => el.style.opacity = '0');
-    animatedText[index].style.opacity = '1';
-    index = (index + 1) % animatedText.length;
-  }, 2000);
-</script>
-
-<!-- About Us Section -->
-<section id="about" class="card" style="margin-top:32px;">
-  <h2 style="font-size:1.9rem;font-weight:800;margin-bottom:12px;">About Us</h2>
-  <p>First, we want to thank all of our amazing customers. Your support and trust in BusinessPal means the world to us.</p>
-  <p>Our mission is simple: to offer <strong>affordable, high-quality web services</strong> for businesses of any size. We understand that every business deserves a strong online presence, and we want to make it possible without breaking the bank.</p>
-  <p>Whether you’re just starting out 🚀 or refreshing your brand 🎨, we’re here to <strong style="color:var(--accent);">boost your business</strong>!</p>
- with professional websites, WordPress solutions, and branding services.</p>
-  <p>We believe that every business deserves to shine online — and we’re committed to helping you do just that, with services that are engaging, affordable, and effective.</p>
-  <p>Thank you for being part of our journey. Let’s build something great together! Your BusinessPal</p>
-</section>
-
-<!-- Quick Quote -->
-<aside class="card" style="margin-top:40px; padding:32px; border-radius:16px; background: linear-gradient(135deg, #1e1e2f, #0d0d0d); box-shadow: 0 10px 28px rgba(0,0,0,0.5); border:1px solid #2a2a2a; text-align:center;">
-  <h3 style="font-size:1.8rem; font-weight:800; margin-bottom:16px; color:#f1f5f9; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Quick Quote</h3>
-  <p style="color:#9ca3af; margin-bottom:8px;">Build fee (one-time):</p>
-  <div style="font-size:1.6rem; font-weight:800; color:white; margin-bottom:16px;">£300</div>
-  <p style="color:#9ca3af; font-size:1rem; margin-bottom:24px;">Covers design, development, testing & launch. Every project includes a pre-launch pitch.</p>
-  <div style="display:flex; justify-content:center; gap:16px;">
-    <button class="btn" style="background:#2563eb; color:white; padding:12px 20px; border-radius:12px; font-weight:700; transition: all 0.3s; cursor:pointer;">Contact Us</button>
-    <button class="btn ghost" style="background:transparent; color:#06b6d4; border:2px solid #06b6d4; padding:12px 20px; border-radius:12px; font-weight:700; transition: all 0.3s; cursor:pointer;">View Sample Pitch</button>
-  </div>
-</aside>
-
-
-<!-- Rebranding Services -->
-<section id="rebranding" style="margin-top:50px; padding:40px; border-radius:16px; background: linear-gradient(135deg, #1e1e2f, #0d0d0d); box-shadow:0 8px 24px rgba(0,0,0,0.45); border:1px solid #2a2a2a;">
-  <h2 style="font-size:2rem; font-weight:800; margin-bottom:16px; text-align:center; color:#f1f5f9; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Rebranding Services</h2>
-  <p style="text-align:center; font-size:1.05rem; margin-bottom:32px; color:#9ca3af;">Transform your brand completely — or refine what you already have. From strategy to visuals, we rebuild your identity with a modern professional look.</p>
-  
-  <div class="rebranding-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px;">
-    <div class="card" style="padding:24px; border-radius:16px; background:#2563eb; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Brand Identity Creation</strong>
-      <p style="color:white; margin-top:8px;">Complete branding from scratch — vision, tone, visuals and system.</p>
+  <div class="grid grid-3" style="margin-top:32px">
+    <div class="card reveal">
+      <h3>Custom Websites</h3>
+      <p>
+        Hand-coded websites built for speed, accessibility, and long-term flexibility.
+        Ideal for businesses in Northern Ireland and the UK that want a unique,
+        high-performance online presence.
+      </p>
     </div>
-    <div class="card" style="padding:24px; border-radius:16px; background:#06b6d4; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Logo & Concept Design</strong>
-      <p style="color:white; margin-top:8px;">Modern logo redesigns or fresh new concepts tailored to your style.</p>
-    </div>
-    <div class="card" style="padding:24px; border-radius:16px; background:#2563eb; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Website Rebrand</strong>
-      <p style="color:white; margin-top:8px;">A full website rebuild or redesign matching your new identity.</p>
-    </div>
-    <div class="card" style="padding:24px; border-radius:16px; background:#06b6d4; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Colours, Fonts & Guidelines</strong>
-      <p style="color:white; margin-top:8px;">Professional color palettes, typography sets and brand rules.</p>
-    </div>
-    <div class="card" style="padding:24px; border-radius:16px; background:#2563eb; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Mockups & Presentations</strong>
-      <p style="color:white; margin-top:8px;">Showcase your brand with product, packaging, storefront & social mockups.</p>
-    </div>
-    <div class="card" style="padding:24px; border-radius:16px; background:#06b6d4; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <strong style="font-size:1.2rem;">Brand Cleanup</strong>
-      <p style="color:white; margin-top:8px;">Enhance or fix your existing brand while keeping your core identity.</p>
-    </div>
-  </div>
 
-  <p style="margin-top:32px; text-align:center; font-size:1rem; color:#9ca3af;">Pricing varies depending on what your business needs. <strong style="color:white;">Contact us for a personalised rebranding estimate.</strong></p>
-</section>
-
-
-
-<!-- Pricing -->
-<section id="pricing" class="card" style="margin-top:50px; padding:40px; background: linear-gradient(135deg, #1e1e2f, #0d0d0d); border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.45); border:1px solid #2a2a2a;">
-  <h2 style="text-align:center; font-size:2rem; font-weight:800; color:#f1f5f9; margin-bottom:16px; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Pricing</h2>
-  <p class="muted" style="text-align:center; color:#9ca3af; margin-bottom:32px;">Simple, transparent pricing. Choose WordPress or custom code. All projects require the one-time build fee.</p>
-  
-  <div class="pricing" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px;">
-    <div class="plan card" style="padding:24px; border-radius:16px; background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <h4 style="margin-top:0; font-size:1.5rem; font-weight:700;">WordPress Plan</h4>
-      <div class="price" style="font-size:2rem; font-weight:800; margin:12px 0;">£30 <span style="font-size:1rem; font-weight:600">/ month</span></div>
-      <p class="note" style="color:#f1f5f9;"><strong>Domain costs:</strong> Not included. Premium domain may incur extra.</p>
-      <ul style="padding-left:20px; margin-top:12px; list-style:disc;">
-        <li>Theme & plugin setup</li>
-        <li>Content population</li>
-        <li>Monthly updates & backups</li>
-      </ul>
+    <div class="card reveal">
+      <h3>WordPress Solutions</h3>
+      <p>
+        Clean, easy-to-manage WordPress websites with professional setup,
+        security best practices, and optional ongoing support.
+      </p>
     </div>
-    
-    <div class="plan card" style="padding:24px; border-radius:16px; background:linear-gradient(135deg, #1a1a1a, #2a2a2a); color:white; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s;">
-      <h4 style="margin-top:0; font-size:1.5rem; font-weight:700;">Custom Code Plan</h4>
-      <div class="price" style="font-size:2rem; font-weight:800; margin:12px 0;">£25 <span style="font-size:1rem; font-weight:600">/ month</span></div>
-      <p class="note" style="color:#f1f5f9;">Maintenance and minor updates included.</p>
-      <ul style="padding-left:20px; margin-top:12px; list-style:disc;">
-        <li>Responsive, hand-coded site</li>
-        <li>Basic SEO & performance tweaks</li>
-        <li>Ongoing minor support</li>
-      </ul>
+
+    <div class="card reveal">
+      <h3>Branding & Rebranding</h3>
+      <p>
+        Logos, colours, typography, and visual identity design to ensure your brand
+        looks consistent, modern, and trustworthy across all platforms.
+      </p>
     </div>
   </div>
 </section>
 
+<!-- PROCESS -->
+<section id="process" class="card reveal">
+  <h2 style="text-align:center">How We Work</h2>
 
-<!-- Process -->
-<section id="process" style="margin-top:60px; padding:40px 20px; background: linear-gradient(135deg, #1b1b2f, #0d0d0d); border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.45);">
-  <h2 style="font-size:2.4rem; font-weight:800; margin-bottom:24px; text-align:center; color:#f1f5f9; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Our Process</h2>
-  <div class="process" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px;">
-    
-    <div class="process-step card" style="padding:28px; text-align:center; transition:transform .35s ease, box-shadow .35s ease;">
-      <div style="font-size:2rem; font-weight:700; color:var(--accent); margin-bottom:12px;">1</div>
-      <strong style="display:block; font-size:1.2rem; margin-bottom:8px;">Discovery</strong>
-      <p class="muted" style="color:#9ca3af;">We learn your goals, audience and must‑haves to plan the perfect solution.</p>
+  <div class="grid grid-3" style="margin-top:28px">
+    <div>
+      <h3>1. Discover</h3>
+      <p class="muted">
+        We learn about your business, goals, and audience so we can plan the right
+        website solution for your needs.
+      </p>
     </div>
-    
-    <div class="process-step card" style="padding:28px; text-align:center; transition:transform .35s ease, box-shadow .35s ease;">
-      <div style="font-size:2rem; font-weight:700; color:var(--accent); margin-bottom:12px;">2</div>
-      <strong style="display:block; font-size:1.2rem; margin-bottom:8px;">Build (£300)</strong>
-      <p class="muted" style="color:#9ca3af;">Design, development, and testing — all included in the one-time fee.</p>
+
+    <div>
+      <h3>2. Build</h3>
+      <p class="muted">
+        Your website is designed and developed with regular updates,
+        clear communication, and attention to detail.
+      </p>
     </div>
-    
-    <div class="process-step card" style="padding:28px; text-align:center; transition:transform .35s ease, box-shadow .35s ease;">
-      <div style="font-size:2rem; font-weight:700; color:var(--accent); margin-bottom:12px;">3</div>
-      <strong style="display:block; font-size:1.2rem; margin-bottom:8px;">Pitch & Launch</strong>
-      <p class="muted" style="color:#9ca3af;">We present your live site, gather feedback, refine, and then officially launch it.</p>
+
+    <div>
+      <h3>3. Launch & Support</h3>
+      <p class="muted">
+        Once launched, we continue supporting your website with optional maintenance,
+        updates, and improvements.
+      </p>
     </div>
-    
   </div>
 </section>
 
+<!-- SUBSCRIPTION -->
+<section id="subscription" class="card reveal">
+  <h2 style="text-align:center">Subscription & Website Maintenance</h2>
 
-<!-- Contact -->
-<<section id="contact" class="card" style="margin-top:50px; padding:40px; background: linear-gradient(135deg, #1e1e2f, #0d0d0d); border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.45); border:1px solid #2a2a2a;">
-  <h2 style="text-align:center; font-size:2rem; font-weight:800; color:#f1f5f9; margin-bottom:16px; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Contact & Bookings</h2>
-  <p class="muted" style="text-align:center; color:#9ca3af; margin-bottom:24px;">Ready to start? Book a pitch and we'll walk you through the demo.</p>
-  
-  <form id="contactForm" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-    <input name="name" placeholder="Your name" required style="padding:12px; border-radius:10px; border:1px solid #2a2a2a; background:#1a1a1a; color:white; outline:none;"/>
-    <input name="email" type="email" placeholder="Email" required style="padding:12px; border-radius:10px; border:1px solid #2a2a2a; background:#1a1a1a; color:white; outline:none;"/>
-    <input name="company" placeholder="Company (optional)" style="padding:12px; border-radius:10px; border:1px solid #2a2a2a; background:#1a1a1a; color:white; outline:none;"/>
-    <select name="service" style="padding:12px; border-radius:10px; border:1px solid #2a2a2a; background:#1a1a1a; color:white; outline:none;">
-      <option>WordPress — £30/month</option>
-      <option>Custom Code — £25/month</option>
-    </select>
-    <textarea name="message" placeholder="Tell us briefly about your project" style="grid-column:1/3; padding:12px; border-radius:10px; border:1px solid #2a2a2a; background:#1a1a1a; color:white; outline:none;"></textarea>
-    
-    <div style="grid-column:1/3; display:flex; gap:12px; justify-content:flex-end; margin-top:8px;">
-      <button class="btn" type="submit" style="flex:1; background:var(--accent); transition:all 0.3s;">Send & Book Pitch</button>
-      <button class="btn ghost" type="button" id="clearBtn" style="flex:1; border-color:var(--accent); color:var(--accent); transition:all 0.3s;">Clear</button>
+  <p class="muted" style="text-align:center">
+    Flexible options designed for small businesses across Northern Ireland and the UK.
+  </p>
+
+  <div class="grid grid-3" style="margin-top:28px">
+    <div>
+      <h3>Subscription-Based Websites</h3>
+      <p class="muted">
+        Prefer a simple monthly option? We offer subscription-based websites where
+        development, updates, and improvements are spread over time —
+        ideal for growing businesses.
+      </p>
     </div>
-  </form>
+
+    <div>
+      <h3>Free Design Mockups</h3>
+      <p class="muted">
+        Before development begins, we provide free visual mockups so you can see
+        exactly how your website may look.
+      </p>
+    </div>
+
+    <div>
+      <h3>Ongoing Maintenance</h3>
+      <p class="muted">
+        For a small ongoing fee, we maintain your website after launch —
+        handling updates, content changes, performance checks, and support.
+      </p>
+    </div>
+  </div>
 </section>
 
-</main>
-<footer>© <span id="year"></span> BusinessPal — Built with care.</footer>
-</div>
+<!-- CONTACT -->
+<section id="contact" class="card reveal">
+  <h2 style="text-align:center">Let’s Talk</h2>
+  <p class="muted" style="text-align:center">
+    Looking for a professional website in Northern Ireland or anywhere in the UK?
+    Tell us about your project and we’ll create a tailored solution.
+  </p>
 
-<!-- Modal -->
-<div class="modal-backdrop" id="modalBackdrop">
-<div class="modal card">
-<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#1a1a1a">
-<h3 style="margin:0">Sample Pitch — Product Preview</h3>
-<button id="closeModal" class="btn ghost">Close</button>
-</div>
-<div class="pitch-carousel">
-<img src="https://via.placeholder.com/760x360/1a1a1a/ffffff?text=Website+Homepage+Preview" />
-<img src="https://via.placeholder.com/300x600/1a1a1a/ffffff?text=Mobile+Design+Preview" />
-<img src="https://via.placeholder.com/760x360/1a1a1a/ffffff?text=Branding+Mockup+Sample" />
-</div>
-</div>
+ <form
+  action="https://formspree.io/f/xgooenjr"
+  method="POST"
+  style="max-width:600px;margin:32px auto;display:grid;gap:12px"
+>
+  <input type="text" name="name" placeholder="Your name" required>
+
+  <input type="email" name="email" placeholder="Email address" required>
+
+  <textarea name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+
+  <!-- Optional extras -->
+  <input type="hidden" name="_subject" value="New BusinessPal Enquiry">
+
+  <button class="btn" type="submit">Request a Free Quote</button>
+</form>
+
+</section>
+
+<footer>
+  © <span id="year"></span> BusinessPal —
+  Web Design & Website Maintenance in Northern Ireland and the UK.
+</footer>
+
 </div>
 
 <script>
-const video = document.getElementById('bgVideo');
-document.addEventListener('DOMContentLoaded', () => {
-  video.play().catch(() => {
-    // autoplay blocked, wait for user gesture
-    document.body.addEventListener('click', () => video.play(), { once: true });
-  });
-});
-
-// Hero animated text
-const animatedText = document.querySelectorAll('.animated-text span');
-let index = 0;
-setInterval(() => {
-  animatedText.forEach((el) => el.style.opacity = '0');
-  animatedText[index].style.opacity = '1';
-  index = (index + 1) % animatedText.length;
-}, 2000);
-
-// Modal
-const modal = document.getElementById('modalBackdrop');
-document.getElementById('previewBtn').addEventListener('click', () => modal.style.display = 'flex');
-document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
-modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
-// Contact form
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const payload = Object.fromEntries(data.entries());
-  alert('Thanks, ' + (payload.name || 'there') + '! We received your request. We will contact ' + (payload.email || 'you') + ' to arrange the pitch.');
-  form.reset();
-});
-document.getElementById('clearBtn').addEventListener('click', () => form.reset());
-
-// Set current year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Tawk.to script
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-(function(){
-  var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-  s1.async = true;
-  s1.src = 'https://embed.tawk.to/YOUR_PROPERTY_ID/default';
-  s1.charset = 'UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1, s0);
-})();
-@keyframes slideUpFade {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-#about p {
-  animation: slideUpFade 0.8s ease forwards;
-  opacity: 0;
-  margin-bottom: 12px;
-}
-
-#about p:nth-child(2) { animation-delay: 0.2s; }
-#about p:nth-child(3) { animation-delay: 0.4s; }
-#about p:nth-child(4) { animation-delay: 0.6s; }
-#about p:nth-child(5) { animation-delay: 0.8s; }
-
-
-</script>
-<!-- End of Tawk.to Script -->
-
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+});
+reveals.forEach(r => observer.observe(r));
 </script>
 
 </body>
 </html>
+
+
+
 
 
 
