@@ -8,6 +8,7 @@
 <meta name="description" content="Promote your business with premium logo placements on BusinessPal. Build trust, recognition, and visibility.">
 
 <style>
+/* ================= ROOT ================= */
 :root{
   --accent:#3b82f6;
   --accent2:#22d3ee;
@@ -15,10 +16,16 @@
   --panel:#0f0f0f;
   --muted:#9ca3af;
   --text:#f1f5f9;
+
+  --gold:#facc15;
+  --orange:#fb923c;
+
+  --ultimate:#8b5cf6;
+  --ultimateGlow:#c084fc;
 }
 
+/* ================= RESET ================= */
 *{box-sizing:border-box}
-
 body{
   margin:0;
   background:var(--bg);
@@ -30,7 +37,6 @@ body{
 header{
   padding:22px 26px;
 }
-
 header a{
   text-decoration:none;
   color:#fff;
@@ -39,111 +45,182 @@ header a{
   border-radius:14px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   box-shadow:0 10px 30px rgba(59,130,246,.35);
-  transition:.25s ease;
-}
-
-header a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(59,130,246,.5);
 }
 
 /* ================= LAYOUT ================= */
 .wrapper{
-  max-width:1100px;
+  max-width:1200px;
   margin:0 auto;
-  padding:40px 20px 80px;
+  padding:40px 20px 90px;
 }
 
 /* ================= HERO ================= */
 .hero{
   text-align:center;
-  margin-bottom:70px;
+  margin-bottom:90px;
 }
-
 .hero h1{
-  font-size:2.8rem;
-  margin-bottom:14px;
+  font-size:3rem;
 }
-
 .hero p{
   color:var(--muted);
-  font-size:1.15rem;
-  max-width:760px;
-  margin:0 auto;
+  max-width:780px;
+  margin:14px auto;
   line-height:1.6;
 }
+.hero-note{
+  margin-top:20px;
+  font-size:.95rem;
+  color:#cbd5f5;
+  opacity:.85;
+}
 
-/* ================= MASTER SLOT ================= */
-.master-slot{
+/* ===================================================== */
+/* ================= ULTIMATE RANK ===================== */
+/* ===================================================== */
+.ultimate-slot{
   position:relative;
-  background:
-    radial-gradient(circle at top, rgba(251,146,60,.25), transparent 60%),
-    linear-gradient(180deg,#1a0f05,#120b05);
-  border-radius:26px;
-  padding:42px;
-  margin-bottom:90px;
   text-align:center;
-  border:3px solid #fb923c;
+  padding:72px 44px;
+  border-radius:38px;
+  margin-bottom:120px;
+  background:
+    radial-gradient(circle at top, rgba(139,92,246,.4), transparent 60%),
+    linear-gradient(180deg,#160b2f,#090615);
+  border:3px solid var(--ultimate);
   box-shadow:
-    0 0 40px rgba(251,146,60,.6),
-    0 0 90px rgba(251,146,60,.4);
-  animation:masterPulse 3s infinite ease-in-out;
+    0 0 70px rgba(139,92,246,.7),
+    0 0 160px rgba(192,132,252,.7);
+  animation:ultimatePulse 3s infinite ease-in-out;
+  overflow:hidden;
 }
 
-@keyframes masterPulse{
-  0%,100%{box-shadow:0 0 40px rgba(251,146,60,.6)}
-  50%{box-shadow:0 0 100px rgba(251,146,60,.9)}
+@keyframes ultimatePulse{
+  0%,100%{box-shadow:0 0 70px rgba(139,92,246,.7)}
+  50%{box-shadow:0 0 180px rgba(192,132,252,1)}
 }
 
-.master-slot h2{
-  font-size:2rem;
-  color:#fdba74;
-  text-shadow:0 0 20px rgba(251,146,60,.9);
-}
-
-.master-slot .price{
-  font-size:2.6rem;
-  font-weight:900;
-  color:#facc15;
-  margin:14px 0;
-}
-
-.master-slot .badge{
+/* Lightning effect */
+.ultimate-slot::before{
+  content:"";
   position:absolute;
-  top:16px;
-  right:18px;
-  padding:6px 14px;
-  border-radius:14px;
+  inset:-50%;
+  background:
+    linear-gradient(120deg,
+      transparent 42%,
+      rgba(255,255,255,.45),
+      transparent 58%);
+  animation:lightningFlash 4s infinite;
+  pointer-events:none;
+}
+
+@keyframes lightningFlash{
+  0%,90%{opacity:0}
+  92%{opacity:1}
+  94%{opacity:0}
+}
+
+.ultimate-slot h2{
+  font-size:2.9rem;
+  color:#ede9fe;
+  text-shadow:
+    0 0 30px rgba(192,132,252,1),
+    0 0 60px rgba(139,92,246,.9);
+}
+
+.ultimate-slot p{
+  color:#ddd6fe;
+  font-size:1.1rem;
+  margin:16px 0;
+}
+
+.ultimate-slot .price{
+  font-size:3.3rem;
+  font-weight:900;
+  color:#e9d5ff;
+  margin:22px 0;
+}
+
+.badge{
+  position:absolute;
+  top:18px;
+  right:20px;
+  padding:8px 18px;
   font-size:.75rem;
   font-weight:900;
-  background:linear-gradient(135deg,#facc15,#f59e0b);
+  border-radius:20px;
+}
+
+.badge.ultimate{
+  background:linear-gradient(135deg,#a78bfa,#c084fc);
   color:#000;
 }
 
-/* ================= LOGO BOARD ================= */
+/* ================= BUTTONS ================= */
+.view-btn{
+  display:inline-block;
+  margin-top:16px;
+  padding:12px 28px;
+  border-radius:14px;
+  font-weight:900;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 12px 30px rgba(59,130,246,.4);
+}
+
+.ultimate-btn{
+  background:linear-gradient(135deg,#a78bfa,#c084fc);
+  color:#000;
+  box-shadow:0 18px 60px rgba(192,132,252,.8);
+}
+
+/* ===================================================== */
+/* ================= MASTER RANK ======================= */
+/* ===================================================== */
+.master-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+  margin-bottom:100px;
+}
+
+.master-slot{
+  text-align:center;
+  padding:42px 34px;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at top, rgba(251,146,60,.25), transparent 60%),
+    linear-gradient(180deg,#1a0f05,#120b05);
+  border:2px solid var(--orange);
+  box-shadow:0 0 50px rgba(251,146,60,.45);
+}
+
+.master-slot h2{
+  color:#fdba74;
+  text-shadow:0 0 18px rgba(251,146,60,.7);
+}
+
+.master-slot .price{
+  font-size:2.3rem;
+  font-weight:900;
+  color:var(--gold);
+}
+
+/* ===================================================== */
+/* ================= LOGO BOARD ======================== */
+/* ===================================================== */
 .logo-board{
   text-align:center;
-  margin-bottom:90px;
+  margin-bottom:100px;
 }
 
-.board-title{
-  font-size:2rem;
-  margin-bottom:10px;
-}
-
-.board-subtitle{
-  color:var(--muted);
-  margin-bottom:42px;
-}
-
-/* ================= GRID ================= */
 .logo-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:28px;
 }
 
-/* ================= LOGO CARDS ================= */
 .logo-slot{
   position:relative;
   background:var(--panel);
@@ -169,65 +246,40 @@ header a:hover{
   object-fit:contain;
 }
 
-/* Badges */
-.logo-slot .badge{
-  position:absolute;
-  top:12px;
-  right:14px;
-  padding:5px 12px;
-  font-size:.75rem;
-  font-weight:900;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-}
-
 /* Tiers */
-.standard{border:2px solid #4b5563;}
-.featured{
+.logo-slot.standard{border:2px solid #6b7280;}
+.logo-slot.featured{
   border:2px solid var(--accent);
   box-shadow:0 0 40px rgba(59,130,246,.35);
 }
-.premium{
+.logo-slot.premium{
   border:2px solid gold;
   box-shadow:0 0 55px rgba(255,215,0,.45);
 }
-.premium .badge{
+
+.logo-slot.standard .badge{
+  background:linear-gradient(135deg,#6b7280,#9ca3af);
+  color:#111;
+}
+.logo-slot.featured .badge{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+.logo-slot.premium .badge{
   background:linear-gradient(135deg,#facc15,#f59e0b);
   color:#000;
 }
 
-/* Available */
-.available{
-  font-weight:800;
-  font-size:1.1rem;
+.logo-slot.available{
   color:#6b7280;
-}
-
-/* Buttons */
-.view-btn{
-  padding:10px 22px;
-  border-radius:12px;
   font-weight:800;
-  font-size:.9rem;
-  text-decoration:none;
-  color:#fff;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
 }
 
-/* ================= PRICING ================= */
+/* ===================================================== */
+/* ================= PRICING ============================ */
+/* ===================================================== */
 .pricing{
   text-align:center;
   margin-bottom:90px;
-}
-
-.pricing h2{
-  font-size:2.3rem;
-  margin-bottom:14px;
-}
-
-.pricing p{
-  color:var(--muted);
-  margin-bottom:45px;
 }
 
 .pricing-grid{
@@ -236,7 +288,6 @@ header a:hover{
   gap:26px;
 }
 
-/* Pricing Cards */
 .price-card{
   background:linear-gradient(180deg,#161616,#101010);
   border-radius:22px;
@@ -245,65 +296,35 @@ header a:hover{
   box-shadow:0 20px 60px rgba(0,0,0,.7);
 }
 
-.price-card h3{
-  font-size:1.6rem;
-}
-
+.price-card h3{font-size:1.6rem;}
 .price{
   font-size:2.3rem;
   font-weight:900;
   color:var(--accent2);
   margin:14px 0;
 }
-
 .price-card ul{
   list-style:none;
   padding:0;
 }
-
 .price-card li{
   padding:8px 0;
   color:var(--muted);
 }
 
-/* Tier Highlights */
-.featured-plan{
-  border:2px solid var(--accent);
-  box-shadow:0 0 40px rgba(59,130,246,.35);
+/* Ultimate pricing card */
+.ultimate-plan{
+  border:3px solid var(--ultimate);
+  box-shadow:0 0 90px rgba(192,132,252,.8);
 }
-
-.premium-plan{
-  border:2px solid gold;
-  box-shadow:0 0 55px rgba(255,215,0,.45);
-}
-
-/* MASTER PRICING CARD */
-.master-plan{
-  border:2px solid #fb923c;
-  background:
-    radial-gradient(circle at top, rgba(251,146,60,.25), transparent 60%),
-    linear-gradient(180deg,#1a0f05,#120b05);
-  box-shadow:
-    0 0 40px rgba(251,146,60,.5),
-    0 0 90px rgba(251,146,60,.3);
-}
-
-.master-plan h3{
-  color:#fdba74;
-}
-
-.master-plan .price{
-  color:#facc15;
-}
+.ultimate-plan h3{color:#ede9fe;}
+.ultimate-plan .price{color:#ddd6fe;}
 
 /* ================= CTA ================= */
-.cta{
-  text-align:center;
-}
-
+.cta{text-align:center;}
 .cta a{
-  padding:16px 34px;
-  border-radius:16px;
+  padding:16px 36px;
+  border-radius:18px;
   font-weight:900;
   text-decoration:none;
   color:#fff;
@@ -315,13 +336,41 @@ header a:hover{
   text-align:center;
   color:#6b7280;
   font-size:.9rem;
-  margin-top:50px;
+  margin-top:60px;
 }
-/* Standard badge */
-.logo-slot.standard .badge{
-  background:linear-gradient(135deg,#6b7280,#9ca3af);
-  color:#111;
+/* ================= PRICING TIERS ================= */
+
+/* Master */
+.master-plan{
+  border:2px solid #fb923c;
+  box-shadow:0 0 45px rgba(251,146,60,.45);
 }
+.master-plan h3{color:#fdba74;}
+.master-plan .price{color:#facc15;}
+
+/* Premium */
+.premium-plan{
+  border:2px solid gold;
+  box-shadow:0 0 35px rgba(255,215,0,.35);
+}
+.premium-plan h3{color:#fde047;}
+.premium-plan .price{color:#facc15;}
+
+/* Featured */
+.featured-plan{
+  border:2px solid var(--accent);
+  box-shadow:0 0 35px rgba(59,130,246,.35);
+}
+.featured-plan h3{color:#93c5fd;}
+.featured-plan .price{color:var(--accent2);}
+
+/* Standard */
+.standard-plan{
+  border:2px solid #6b7280;
+  box-shadow:0 0 25px rgba(107,114,128,.25);
+}
+.standard-plan h3{color:#e5e7eb;}
+.standard-plan .price{color:#9ca3af;}
 
 </style>
 </head>
@@ -336,39 +385,52 @@ header a:hover{
 
 <section class="hero">
   <h1>Advertisement Space</h1>
-  <p>
-    Premium logo placements designed to build authority,
-    trust, and lasting brand recognition.
-  </p>
-
+  <p>Premium logo placements designed to build authority, trust, and lasting brand recognition.</p>
   <p class="hero-note">
-    Please note: These subscriptions are for advertising placement only.
-    They do not include website design, development, hosting, or any
-    additional services. This space is intended exclusively for businesses
-    that already have a website and are looking to promote their brand.
+    Advertising only — no website development included.
+    For businesses with an existing online presence.
   </p>
 </section>
 
-
-<section class="master-slot">
-  <span class="badge">1 SPACE ONLY</span>
-  <h2>🔥 Master Rank</h2>
-  <p>Single global placement · Maximum visibility</p>
-  <div class="price">£299 / month</div>
-  <a href="mailto:karolex3210@gmail.com?subject=Master Rank Enquiry" class="view-btn">
-    Apply for Master Rank
+<!-- 👑 ULTIMATE -->
+<section class="ultimate-slot">
+  <span class="badge ultimate">ONLY 1 SPACE</span>
+  <h2>⚡ Ultimate Rank</h2>
+  <p>Absolute dominance · Global top placement</p>
+  <div class="price">£899 / month</div>
+  <a href="mailto:karolex3210@gmail.com?subject=Ultimate Rank Enquiry" class="view-btn ultimate-btn">
+    Apply for Ultimate Rank
   </a>
 </section>
 
-<section class="logo-board">
-  <h2 class="board-title">Sponsored Partners</h2>
+<!-- 🔥 MASTER -->
+<section class="master-grid">
+  <div class="master-slot">
+    <h2>🔥 Master Rank</h2>
+    <div class="price">£299 / month</div>
+    <a href="mailto:karolex3210@gmail.com?subject=Master Rank Enquiry" class="view-btn">Apply</a>
+  </div>
+  <div class="master-slot">
+    <h2>🔥 Master Rank</h2>
+    <div class="price">£299 / month</div>
+    <a href="mailto:karolex3210@gmail.com?subject=Master Rank Enquiry" class="view-btn">Apply</a>
+  </div>
+  <div class="master-slot">
+    <h2>🔥 Master Rank</h2>
+    <div class="price">£299 / month</div>
+    <a href="mailto:karolex3210@gmail.com?subject=Master Rank Enquiry" class="view-btn">Apply</a>
+  </div>
+</section>
 
+<!-- 🧱 LOGOS -->
+<section class="logo-board">
   <div class="logo-grid">
+
     <div class="logo-slot premium">
       <span class="badge">Premium</span>
       <div class="logo-content">
         <img src="company1.jpg">
-        <a href="https://www.facebook.com/profile.php?id=100063620305120" class="view-btn">View Company</a>
+        <a href="#" class="view-btn">View Company</a>
       </div>
     </div>
 
@@ -376,7 +438,7 @@ header a:hover{
       <span class="badge">Featured</span>
       <div class="logo-content">
         <img src="company2.jpg">
-        <a href="https://www.facebook.com/profile.php?id=61559692455809" class="view-btn">View Company</a>
+        <a href="#" class="view-btn">View Company</a>
       </div>
     </div>
 
@@ -384,71 +446,79 @@ header a:hover{
       <span class="badge">Standard</span>
       <div class="logo-content">
         <img src="company3.png">
-        <a href="https://www.tiktok.com/@asmrplaceforall" class="view-btn">View Company</a>
+        <a href="#" class="view-btn">View Company</a>
       </div>
     </div>
 
     <div class="logo-slot available">Available</div>
     <div class="logo-slot available">Available</div>
     <div class="logo-slot available">Available</div>
+
   </div>
 </section>
 
+<!-- 💰 PRICING -->
 <section class="pricing">
   <h2>Advertising Plans</h2>
-  <p>Simple monthly subscriptions. Cancel anytime.</p>
 
   <div class="pricing-grid">
 
-    <div class="price-card master-plan">
-      <h3>Master Rank 🔥</h3>
-      <div class="price">£299/mo</div>
+    <div class="price-card ultimate-plan">
+      <h3>Ultimate Rank ⚡</h3>
+      <div class="price">£899 / month</div>
       <ul>
-        <li>Single global placement</li>
-        <li>Top-of-page dominance</li>
-        <li>Animated flame highlight</li>
-        <li>Maximum brand authority</li>
+        <li>Top-of-page global placement</li>
+        <li>Exclusive lightning & glow effects</li>
         <li>Only one business allowed</li>
+        <li>Maximum brand authority</li>
       </ul>
     </div>
 
- <div class="price-card premium-plan">
+    <div class="price-card master-plan">
+      <h3>Master Rank 🔥</h3>
+      <div class="price">£299 / month</div>
+      <ul>
+        <li>High-visibility featured position</li>
+        <li>Limited number of slots</li>
+        <li>Enhanced visual styling</li>
+        <li>Strong brand credibility boost</li>
+      </ul>
+    </div>
+
+    <div class="price-card premium-plan">
       <h3>Premium</h3>
-      <div class="price">£100/mo</div>
+      <div class="price">£100 / month</div>
       <ul>
-        <li>Top-tier placement</li>
-        <li>Gold branding</li>
-        <li>Maximum exposure</li>
+        <li>Highlighted logo placement</li>
+        <li>Priority position over standard ads</li>
+        <li>Increased brand exposure</li>
       </ul>
     </div>
-	
-	  <div class="price-card featured-plan">
+
+    <div class="price-card featured-plan">
       <h3>Featured</h3>
-      <div class="price">£50/mo</div>
+      <div class="price">£50 / month</div>
       <ul>
-        <li>Highlighted placement</li>
-        <li>Higher visibility</li>
-        <li>Website link</li>
+        <li>Noticeable logo placement</li>
+        <li>Improved visibility across the site</li>
       </ul>
     </div>
-	
-    <div class="price-card">
+
+    <div class="price-card standard-plan">
       <h3>Standard</h3>
-      <div class="price">£25/mo</div>
+      <div class="price">£25 / month</div>
       <ul>
-        <li>Logo placement</li>
-        <li>Website link</li>
-        <li>Neutral visibility</li>
+        <li>Clean logo placement</li>
+        <li>Affordable brand presence</li>
       </ul>
     </div>
 
   </div>
 </section>
 
+
 <section class="cta">
-  <a href="mailto:karolex3210@gmail.com?subject=Advertising Enquiry">
-    Contact Us →
-  </a>
+  <a href="mailto:karolex3210@gmail.com?subject=Advertising Enquiry">Contact Us →</a>
 </section>
 
 <p class="note">
@@ -456,9 +526,9 @@ header a:hover{
 </p>
 
 </main>
-
 </body>
 </html>
+
 
 
 
