@@ -374,6 +374,72 @@ footer{
 .popup-btn.primary:active{
   transform:scale(.97);
 }
+.ad-promo{
+  margin:90px auto;
+  max-width:1100px;
+  padding:50px 40px;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at top, rgba(59,130,246,.18), transparent 60%),
+    linear-gradient(180deg,#151515,#0f0f0f);
+  border:1px solid #262626;
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+}
+
+.ad-promo-content{
+  text-align:center;
+}
+
+.ad-promo h2{
+  font-size:2.3rem;
+  margin-bottom:16px;
+}
+
+.ad-promo p{
+  max-width:720px;
+  margin:0 auto 34px;
+  color:#9ca3af;
+  font-size:1.1rem;
+  line-height:1.6;
+}
+
+/* Buttons */
+.ad-promo-actions{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.ad-btn{
+  padding:14px 30px;
+  border-radius:16px;
+  font-weight:800;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.ad-btn.primary{
+  color:#fff;
+  background:linear-gradient(135deg,#3b82f6,#22d3ee);
+  box-shadow:0 12px 36px rgba(59,130,246,.45);
+}
+
+.ad-btn.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 55px rgba(59,130,246,.6);
+}
+
+.ad-btn.secondary{
+  color:#cbd5f5;
+  border:1px solid #334155;
+  background:#0f172a;
+}
+
+.ad-btn.secondary:hover{
+  border-color:#3b82f6;
+  color:#fff;
+}
 
 
 </style>
@@ -418,6 +484,7 @@ footer{
 
 </div>
 <header>
+
   <div class="header-inner">
     <div class="logo">
       <img src="BP.png" alt="BusinessPal logo">
@@ -427,6 +494,7 @@ footer{
       </div>
     </div>
    <nav>
+     <a href="advertise.html">Advertising_Space</a>
   <a href="#services">Services</a>
   <a href="#process">Process</a>
   <a href="#subscription">Support</a>
@@ -464,8 +532,30 @@ footer{
       <strong>Northern Ireland and the UK</strong>.
     </p>
     <div style="margin-top:28px">
+	
+
       <a href="#contact"><button class="btn">Get a Free Quote</button></a>
       <a href="#services"><button class="btn ghost">Our Services</button></a>
+    </div>
+  </div>
+</section>
+<section class="ad-promo">
+  <div class="ad-promo-content">
+    <h2>Advertise With BusinessPal</h2>
+    <p>
+      Showcase your brand in a trusted, professional environment.
+      Premium placements available for businesses looking for
+      visibility that actually stands out.
+    </p>
+
+    <div class="ad-promo-actions">
+      <a href="advertise.html" class="ad-btn primary">
+        View Advertising Options →
+      </a>
+      <a href="mailto:karolex3210@gmail.com?subject=Advertising Enquiry"
+         class="ad-btn secondary">
+        Enquire Now
+      </a>
     </div>
   </div>
 </section>

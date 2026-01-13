@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Advertisement Space | BusinessPal</title>
+<meta name="description" content="Promote your business with premium logo placements on BusinessPal. Build trust, recognition, and visibility.">
+
+<style>
+:root{
+  --accent:#3b82f6;
+  --accent2:#22d3ee;
+  --bg:#0a0a0a;
+  --panel:#0f0f0f;
+  --muted:#9ca3af;
+  --text:#f1f5f9;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+}
+
+/* ================= HEADER ================= */
+header{
+  padding:22px 26px;
+}
+
+header a{
+  text-decoration:none;
+  color:#fff;
+  font-weight:800;
+  padding:12px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 30px rgba(59,130,246,.35);
+  transition:.25s ease;
+}
+
+header a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(59,130,246,.5);
+}
+
+/* ================= LAYOUT ================= */
+.wrapper{
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 20px 80px;
+}
+
+/* ================= HERO ================= */
+.hero{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.hero h1{
+  font-size:2.8rem;
+  margin-bottom:14px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:1.15rem;
+  max-width:760px;
+  margin:0 auto;
+  line-height:1.6;
+}
+
+/* ================= MASTER SLOT ================= */
+.master-slot{
+  position:relative;
+  background:
+    radial-gradient(circle at top, rgba(251,146,60,.25), transparent 60%),
+    linear-gradient(180deg,#1a0f05,#120b05);
+  border-radius:26px;
+  padding:42px;
+  margin-bottom:90px;
+  text-align:center;
+  border:3px solid #fb923c;
+  box-shadow:
+    0 0 40px rgba(251,146,60,.6),
+    0 0 90px rgba(251,146,60,.4);
+  animation:masterPulse 3s infinite ease-in-out;
+}
+
+@keyframes masterPulse{
+  0%,100%{box-shadow:0 0 40px rgba(251,146,60,.6)}
+  50%{box-shadow:0 0 100px rgba(251,146,60,.9)}
+}
+
+.master-slot h2{
+  font-size:2rem;
+  color:#fdba74;
+  text-shadow:0 0 20px rgba(251,146,60,.9);
+}
+
+.master-slot .price{
+  font-size:2.6rem;
+  font-weight:900;
+  color:#facc15;
+  margin:14px 0;
+}
+
+.master-slot .badge{
+  position:absolute;
+  top:16px;
+  right:18px;
+  padding:6px 14px;
+  border-radius:14px;
+  font-size:.75rem;
+  font-weight:900;
+  background:linear-gradient(135deg,#facc15,#f59e0b);
+  color:#000;
+}
+
+/* ================= LOGO BOARD ================= */
+.logo-board{
+  text-align:center;
+  margin-bottom:90px;
+}
+
+.board-title{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.board-subtitle{
+  color:var(--muted);
+  margin-bottom:42px;
+}
+
+/* ================= GRID ================= */
+.logo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:28px;
+}
+
+/* ================= LOGO CARDS ================= */
+.logo-slot{
+  position:relative;
+  background:var(--panel);
+  border-radius:22px;
+  padding:22px;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px dashed #333;
+}
+
+.logo-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+
+.logo-slot img{
+  max-width:160px;
+  max-height:80px;
+  object-fit:contain;
+}
+
+/* Badges */
+.logo-slot .badge{
+  position:absolute;
+  top:12px;
+  right:14px;
+  padding:5px 12px;
+  font-size:.75rem;
+  font-weight:900;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+/* Tiers */
+.standard{border:2px solid #4b5563;}
+.featured{
+  border:2px solid var(--accent);
+  box-shadow:0 0 40px rgba(59,130,246,.35);
+}
+.premium{
+  border:2px solid gold;
+  box-shadow:0 0 55px rgba(255,215,0,.45);
+}
+.premium .badge{
+  background:linear-gradient(135deg,#facc15,#f59e0b);
+  color:#000;
+}
+
+/* Available */
+.available{
+  font-weight:800;
+  font-size:1.1rem;
+  color:#6b7280;
+}
+
+/* Buttons */
+.view-btn{
+  padding:10px 22px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:.9rem;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+/* ================= PRICING ================= */
+.pricing{
+  text-align:center;
+  margin-bottom:90px;
+}
+
+.pricing h2{
+  font-size:2.3rem;
+  margin-bottom:14px;
+}
+
+.pricing p{
+  color:var(--muted);
+  margin-bottom:45px;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+
+/* Pricing Cards */
+.price-card{
+  background:linear-gradient(180deg,#161616,#101010);
+  border-radius:22px;
+  padding:36px;
+  border:1px solid #262626;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+}
+
+.price-card h3{
+  font-size:1.6rem;
+}
+
+.price{
+  font-size:2.3rem;
+  font-weight:900;
+  color:var(--accent2);
+  margin:14px 0;
+}
+
+.price-card ul{
+  list-style:none;
+  padding:0;
+}
+
+.price-card li{
+  padding:8px 0;
+  color:var(--muted);
+}
+
+/* Tier Highlights */
+.featured-plan{
+  border:2px solid var(--accent);
+  box-shadow:0 0 40px rgba(59,130,246,.35);
+}
+
+.premium-plan{
+  border:2px solid gold;
+  box-shadow:0 0 55px rgba(255,215,0,.45);
+}
+
+/* MASTER PRICING CARD */
+.master-plan{
+  border:2px solid #fb923c;
+  background:
+    radial-gradient(circle at top, rgba(251,146,60,.25), transparent 60%),
+    linear-gradient(180deg,#1a0f05,#120b05);
+  box-shadow:
+    0 0 40px rgba(251,146,60,.5),
+    0 0 90px rgba(251,146,60,.3);
+}
+
+.master-plan h3{
+  color:#fdba74;
+}
+
+.master-plan .price{
+  color:#facc15;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+}
+
+.cta a{
+  padding:16px 34px;
+  border-radius:16px;
+  font-weight:900;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+/* ================= FOOTER ================= */
+.note{
+  text-align:center;
+  color:#6b7280;
+  font-size:.9rem;
+  margin-top:50px;
+}
+/* Standard badge */
+.logo-slot.standard .badge{
+  background:linear-gradient(135deg,#6b7280,#9ca3af);
+  color:#111;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<main class="wrapper">
+
+<section class="hero">
+  <h1>Advertisement Space</h1>
+  <p>
+    Premium logo placements designed to build authority,
+    trust, and lasting brand recognition.
+  </p>
+</section>
+
+<section class="master-slot">
+  <span class="badge">1 SPACE ONLY</span>
+  <h2>🔥 Master Rank</h2>
+  <p>Single global placement · Maximum visibility</p>
+  <div class="price">£299 / month</div>
+  <a href="mailto:ads@businesspal.online?subject=Master Rank Enquiry" class="view-btn">
+    Apply for Master Rank
+  </a>
+</section>
+
+<section class="logo-board">
+  <h2 class="board-title">Sponsored Partners</h2>
+
+  <div class="logo-grid">
+    <div class="logo-slot premium">
+      <span class="badge">Premium</span>
+      <div class="logo-content">
+        <img src="company1.jpg">
+        <a href="https://www.facebook.com/profile.php?id=100063620305120" class="view-btn">View Company</a>
+      </div>
+    </div>
+
+    <div class="logo-slot featured">
+      <span class="badge">Featured</span>
+      <div class="logo-content">
+        <img src="company2.jpg">
+        <a href="https://www.facebook.com/profile.php?id=61559692455809" class="view-btn">View Company</a>
+      </div>
+    </div>
+
+    <div class="logo-slot standard">
+      <span class="badge">Standard</span>
+      <div class="logo-content">
+        <img src="company3.png">
+        <a href="https://www.tiktok.com/@asmrplaceforall" class="view-btn">View Company</a>
+      </div>
+    </div>
+
+    <div class="logo-slot available">Available</div>
+    <div class="logo-slot available">Available</div>
+    <div class="logo-slot available">Available</div>
+  </div>
+</section>
+
+<section class="pricing">
+  <h2>Advertising Plans</h2>
+  <p>Simple monthly subscriptions. Cancel anytime.</p>
+
+  <div class="pricing-grid">
+
+    <div class="price-card master-plan">
+      <h3>Master Rank 🔥</h3>
+      <div class="price">£299/mo</div>
+      <ul>
+        <li>Single global placement</li>
+        <li>Top-of-page dominance</li>
+        <li>Animated flame highlight</li>
+        <li>Maximum brand authority</li>
+        <li>Only one business allowed</li>
+      </ul>
+    </div>
+
+ <div class="price-card premium-plan">
+      <h3>Premium</h3>
+      <div class="price">£100/mo</div>
+      <ul>
+        <li>Top-tier placement</li>
+        <li>Gold branding</li>
+        <li>Maximum exposure</li>
+      </ul>
+    </div>
+	
+	  <div class="price-card featured-plan">
+      <h3>Featured</h3>
+      <div class="price">£50/mo</div>
+      <ul>
+        <li>Highlighted placement</li>
+        <li>Higher visibility</li>
+        <li>Website link</li>
+      </ul>
+    </div>
+	
+    <div class="price-card">
+      <h3>Standard</h3>
+      <div class="price">£25/mo</div>
+      <ul>
+        <li>Logo placement</li>
+        <li>Website link</li>
+        <li>Neutral visibility</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <a href="mailto:ads@businesspal.online?subject=Advertising Enquiry">
+    Contact Us →
+  </a>
+</section>
+
+<p class="note">
+  * All advertisements are manually reviewed to maintain quality and relevance.
+</p>
+
+</main>
+
+</body>
+</html>
+
+
+
+
