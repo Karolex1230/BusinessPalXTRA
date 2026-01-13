@@ -101,14 +101,20 @@ footer{
 }
 
 .mobile-nav{
+  position:fixed;
+  top:64px; /* height of header */
+  left:0;
+  width:100%;
+  height:calc(100vh - 64px);
+  background:#000;
   display:none;
   flex-direction:column;
-  background:#000;
-  border-top:1px solid #222;
+  z-index:999;
+  overflow-y:auto;
 }
 
 .mobile-nav a{
-  padding:16px 28px;
+  padding:18px 28px;
   border-bottom:1px solid #222;
   font-weight:600;
 }
@@ -118,6 +124,17 @@ footer{
   nav{display:none}
   .menu-toggle{display:block}
   .mobile-nav.open{display:flex}
+}
+.mobile-nav{
+  transform:translateY(-10px);
+  opacity:0;
+  transition:opacity .3s ease, transform .3s ease;
+}
+
+.mobile-nav.open{
+  display:flex;
+  opacity:1;
+  transform:translateY(0);
 }
 
 </style>
@@ -355,6 +372,12 @@ reveals.forEach(r => observer.observe(r));
 function toggleMenu(){
   document.getElementById('mobileNav').classList.toggle('open');
 }
+function toggleMenu(){
+  const menu = document.getElementById('mobileNav');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
 
 </script>
 
