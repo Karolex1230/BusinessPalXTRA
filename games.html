@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Catch the Bug | BusinessPal</title>
+<meta name="description" content="Fun interactive game built by BusinessPal to demonstrate JavaScript and UI skills.">
+
+<style>
+:root{
+  --accent:#3b82f6;
+  --accent2:#22d3ee;
+  --bg:#0a0a0a;
+  --card:#141414;
+  --muted:#a1a1aa;
+  --text:#f1f5f9;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+}
+
+/* Header */
+.top-bar{
+  padding:18px 24px;
+}
+
+.back-btn{
+  color:var(--accent);
+  font-weight:700;
+  text-decoration:none;
+}
+
+.back-btn:hover{
+  color:var(--accent2);
+}
+
+/* Layout */
+.wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+.card{
+  background:linear-gradient(180deg,#161616,#101010);
+  border-radius:20px;
+  padding:36px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  border:1px solid #262626;
+}
+
+h1{
+  margin:0;
+  font-size:2.2rem;
+}
+
+.subtitle{
+  margin:12px 0 26px;
+  color:var(--muted);
+}
+
+/* Game area */
+.game-area{
+  position:relative;
+  height:260px;
+  background:#0f0f0f;
+  border-radius:18px;
+  border:1px solid #222;
+  overflow:hidden;
+}
+
+/* Bug */
+.bug{
+  position:absolute;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:radial-gradient(circle at top,#ef4444,#7f1d1d);
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(239,68,68,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.3rem;
+  user-select:none;
+  animation:pop .25s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.4)}
+  to{transform:scale(1)}
+}
+
+/* Stats */
+.stats{
+  display:flex;
+  justify-content:space-between;
+  margin:18px 0;
+  font-weight:700;
+}
+
+.stat span{
+  color:var(--accent);
+}
+
+/* Button */
+button{
+  margin-top:16px;
+  padding:14px 28px;
+  border-radius:14px;
+  border:0;
+  font-weight:700;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 30px rgba(59,130,246,.35);
+  transition:.25s ease;
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+.result{
+  margin-top:18px;
+  font-size:1.4rem;
+  font-weight:800;
+}
+.rank-table tr.special td{
+  color:#22c55e;
+  font-weight:800;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="top-bar">
+  <a href="../index.html" class="back-btn">← Back to BusinessPal</a>
+</header>
+
+<main class="wrapper">
+  <div class="card">
+
+    <h1>Catch the Bug 🐞</h1>
+    <p class="subtitle">
+      Click the bug as many times as you can in 20 seconds.
+    </p>
+
+    <div class="stats">
+      <div class="stat">Score: <span id="score">0</span></div>
+      <div class="stat">Time: <span id="time">20</span>s</div>
+    </div>
+
+    <div id="gameArea" class="game-area"></div>
+
+    <button id="startBtn">Start Game</button>
+
+    <div id="result" class="result"></div>
+
+  </div>
+  <table class="rank-table">
+  <tr><td>0–19</td><td>Beginner</td></tr>
+  <tr><td>20–29</td><td>Amateur</td></tr>
+  <tr><td>30–39</td><td>Skilled</td></tr>
+  <tr><td>40–49</td><td>Pro</td></tr>
+  <tr><td>50–59</td><td>Elite</td></tr>
+  <tr><td>60–99</td><td>Legendary</td></tr>
+  <tr><td>100–499</td><td>Master</td></tr>
+  <tr class="special">
+    <td>500+</td>
+    <td>🎁 Free Website (Eligibility)</td>
+  </tr>
+</table>
+</main>
+
+
+<script>
+function getRank(score){
+  if(score >= 500) return '🎁 Free Website (Eligibility)';
+  if(score >= 100) return 'Master 🏆';
+  if(score >= 60) return 'Legendary 🔥';
+  if(score >= 50) return 'Elite 💎';
+  if(score >= 40) return 'Pro 🚀';
+  if(score >= 30) return 'Skilled ⚡';
+  if(score >= 20) return 'Amateur 🎯';
+  return 'Beginner 🌱';
+}
+
+const gameArea = document.getElementById('gameArea');
+const scoreEl = document.getElementById('score');
+const timeEl = document.getElementById('time');
+const startBtn = document.getElementById('startBtn');
+const resultEl = document.getElementById('result');
+
+let score = 0;
+let timeLeft = 45;
+let timer = null;
+let active = false;
+
+function spawnBug(){
+  if(!active) return;
+
+  gameArea.innerHTML = '';
+
+  const bug = document.createElement('div');
+  bug.className = 'bug';
+  bug.textContent = '🐞';
+
+  const maxX = gameArea.clientWidth - 44;
+  const maxY = gameArea.clientHeight - 44;
+
+  bug.style.left = Math.random() * maxX + 'px';
+  bug.style.top = Math.random() * maxY + 'px';
+
+  bug.addEventListener('click', () => {
+    score++;
+    scoreEl.textContent = score;
+    spawnBug();
+  });
+
+  gameArea.appendChild(bug);
+}
+
+startBtn.addEventListener('click', () => {
+  score = 0;
+  timeLeft = 45;
+  active = true;
+
+  scoreEl.textContent = score;
+  timeEl.textContent = timeLeft;
+  resultEl.textContent = '';
+  startBtn.disabled = true;
+
+  spawnBug();
+
+  timer = setInterval(() => {
+    timeLeft--;
+    timeEl.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+      clearInterval(timer);
+      active = false;
+      gameArea.innerHTML = '';
+      startBtn.disabled = false;
+      resultEl.textContent = `Game over! You caught ${score} bugs 🐞`;
+    }
+  }, 1000);
+});
+</script>
+
+</body>
+</html>
+
+
