@@ -72,8 +72,8 @@ h1{margin:0;font-size:2.2rem}
 /* Bugs */
 .bug{
   position:absolute;
-  width:44px;
-  height:44px;
+   width:36px;
+  height:36px;
   border-radius:50%;
   cursor:pointer;
   display:flex;
@@ -268,11 +268,21 @@ function spawnRedBug(){
   bug.className = 'bug red';
   bug.textContent = '🐞';
 
-  bug.style.left = Math.random() * (gameArea.clientWidth - 44) + 'px';
-  bug.style.top = Math.random() * (gameArea.clientHeight - 44) + 'px';
+  let moveInterval;
+
+  function moveBug(){
+    const speed = Math.max(700 - score * 5, 300); // gets faster
+    bug.style.transition = `left ${speed}ms linear, top ${speed}ms linear`;
+    bug.style.left = Math.random() * (gameArea.clientWidth - 36) + 'px';
+    bug.style.top = Math.random() * (gameArea.clientHeight - 36) + 'px';
+  }
+
+  moveBug();
+  moveInterval = setInterval(moveBug, Math.max(900 - score * 6, 400));
 
   bug.onclick = () => {
     if(!active) return;
+    clearInterval(moveInterval);
     score++;
     scoreEl.textContent = score;
     glow();
@@ -283,6 +293,7 @@ function spawnRedBug(){
 
   gameArea.appendChild(bug);
 }
+
 
 /* BLUE BUG (bonus) */
 function spawnBlueBug(){
@@ -314,9 +325,9 @@ function spawnBlueBug(){
   moveInterval = setInterval(moveBug, 900); // SLOW movement
 
   setTimeout(() => {
-    clearInterval(moveInterval);
-    bug.remove();
-  }, 6000);
+  clearInterval(moveInterval);
+  bug.remove();
+}, 4000); // shorter lifespan
 }
 
 /* Random blue bug chance */
