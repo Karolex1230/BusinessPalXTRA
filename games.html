@@ -28,26 +28,21 @@ body{
 }
 
 /* Header */
-.top-bar{
-  padding:18px 24px;
-}
-
+.top-bar{padding:18px 24px}
 .back-btn{
   color:var(--accent);
   font-weight:700;
   text-decoration:none;
 }
-
-.back-btn:hover{
-  color:var(--accent2);
-}
+.back-btn:hover{color:var(--accent2)}
 
 /* Layout */
 .wrapper{
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:center;
   padding:40px 20px;
+  gap:28px;
 }
 
 .card{
@@ -61,15 +56,8 @@ body{
   border:1px solid #262626;
 }
 
-h1{
-  margin:0;
-  font-size:2.2rem;
-}
-
-.subtitle{
-  margin:12px 0 26px;
-  color:var(--muted);
-}
+h1{margin:0;font-size:2.2rem}
+.subtitle{margin:12px 0 26px;color:var(--muted)}
 
 /* Game area */
 .game-area{
@@ -81,26 +69,44 @@ h1{
   overflow:hidden;
 }
 
-/* Bug */
+/* Bugs */
 .bug{
   position:absolute;
   width:44px;
   height:44px;
   border-radius:50%;
-  background:radial-gradient(circle at top,#ef4444,#7f1d1d);
   cursor:pointer;
-  box-shadow:0 0 20px rgba(239,68,68,.6);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:1.3rem;
   user-select:none;
-  animation:pop .25s ease;
+  animation:pop .2s ease;
 }
+
+/* Normal bug */
+.bug.red{
+  background:radial-gradient(circle at top,#ef4444,#7f1d1d);
+  box-shadow:0 0 18px rgba(239,68,68,.6);
+}
+
+/* Blue runner bug */
+.bug.blue{
+  background:radial-gradient(circle at top,#38bdf8,#1e3a8a);
+  box-shadow:0 0 18px rgba(56,189,248,.7);
+  transition: left .9s linear, top .9s linear;
+}
+
+
 
 @keyframes pop{
   from{transform:scale(.4)}
   to{transform:scale(1)}
+}
+
+@keyframes runBug{
+  from{transform:translateX(0)}
+  to{transform:translateX(340px)}
 }
 
 /* Stats */
@@ -110,10 +116,7 @@ h1{
   margin:18px 0;
   font-weight:700;
 }
-
-.stat span{
-  color:var(--accent);
-}
+.stat span{color:var(--accent)}
 
 /* Button */
 button{
@@ -126,21 +129,66 @@ button{
   color:#fff;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   box-shadow:0 10px 30px rgba(59,130,246,.35);
-  transition:.25s ease;
-}
-
-button:hover{
-  transform:translateY(-2px);
 }
 
 .result{
   margin-top:18px;
-  font-size:1.4rem;
+  font-size:1.3rem;
   font-weight:800;
 }
+
+/* Rank table */
+.rank-table{
+  border-collapse:collapse;
+  max-width:520px;
+  width:100%;
+  background:#111;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.rank-table td{
+  padding:12px 16px;
+  border-bottom:1px solid #222;
+  font-weight:600;
+}
+
 .rank-table tr.special td{
   color:#22c55e;
   font-weight:800;
+}
+
+/* Gold glow */
+@keyframes goldGlow{
+  0%{box-shadow:0 0 0 rgba(255,215,0,0)}
+  50%{box-shadow:0 0 30px rgba(255,215,0,.9)}
+  100%{box-shadow:0 0 0 rgba(255,215,0,0)}
+}
+
+.gold-glow{animation:goldGlow .8s ease-out;color:gold}
+
+.rank-table tr.active-rank{
+  background:linear-gradient(90deg,rgba(255,215,0,.15),rgba(255,215,0,.05));
+  color:gold;
+  box-shadow:inset 0 0 25px rgba(255,215,0,.6);
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 22px;
+  border-radius:14px;
+  font-weight:700;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,#3b82f6,#22d3ee);
+  box-shadow:0 10px 30px rgba(59,130,246,.35);
+  transition:.25s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 40px rgba(59,130,246,.5);
 }
 
 </style>
@@ -149,93 +197,138 @@ button:hover{
 <body>
 
 <header class="top-bar">
-  <a href="../index.html" class="back-btn">← Back to BusinessPal</a>
+  <a href="index.html" class="btn">← Back to Home</a>
 </header>
 
 <main class="wrapper">
-  <div class="card">
 
-    <h1>Catch the Bug 🐞</h1>
-    <p class="subtitle">
-      Click the bug as many times as you can in 20 seconds.
-    </p>
+<div class="card">
+<h1>Catch the Bug 🐞</h1>
+<p class="subtitle">Red bugs = +1 point. Blue bugs = +2 seconds.</p>
 
-    <div class="stats">
-      <div class="stat">Score: <span id="score">0</span></div>
-      <div class="stat">Time: <span id="time">20</span>s</div>
-    </div>
+<div class="stats">
+  <div class="stat" id="scoreBox">Score: <span id="score">0</span></div>
+  <div class="stat">Time: <span id="time">45</span>s</div>
+</div>
 
-    <div id="gameArea" class="game-area"></div>
+<div id="gameArea" class="game-area"></div>
+<button id="startBtn">Start Game</button>
+<div id="result" class="result"></div>
+</div>
 
-    <button id="startBtn">Start Game</button>
-
-    <div id="result" class="result"></div>
-
-  </div>
-  <table class="rank-table">
-  <tr><td>0–19</td><td>Beginner</td></tr>
-  <tr><td>20–29</td><td>Amateur</td></tr>
-  <tr><td>30–39</td><td>Skilled</td></tr>
-  <tr><td>40–49</td><td>Pro</td></tr>
-  <tr><td>50–59</td><td>Elite</td></tr>
-  <tr><td>60–99</td><td>Legendary</td></tr>
-  <tr><td>100–499</td><td>Master</td></tr>
-  <tr class="special">
-    <td>500+</td>
-    <td>🎁 Free Website (Eligibility)</td>
-  </tr>
+<table class="rank-table">
+<tr data-min="0"><td>0–14</td><td>Beginner 🌱</td></tr>
+<tr data-min="15"><td>15–29</td><td>Amateur 🎯</td></tr>
+<tr data-min="30"><td>30–49</td><td>Skilled ⚡</td></tr>
+<tr data-min="50"><td>50–79</td><td>Pro 🚀</td></tr>
+<tr data-min="80"><td>80–119</td><td>Elite 💎</td></tr>
+<tr data-min="120"><td>120–199</td><td>Legendary 🔥</td></tr>
+<tr data-min="200"><td>200–399</td><td>Master 🏆</td></tr>
+<tr data-min="400" class="special"><td>400+</td><td>🎁 Free Website</td></tr>
 </table>
+
 </main>
 
-
 <script>
-function getRank(score){
-  if(score >= 500) return '🎁 Free Website (Eligibility)';
-  if(score >= 100) return 'Master 🏆';
-  if(score >= 60) return 'Legendary 🔥';
-  if(score >= 50) return 'Elite 💎';
-  if(score >= 40) return 'Pro 🚀';
-  if(score >= 30) return 'Skilled ⚡';
-  if(score >= 20) return 'Amateur 🎯';
-  return 'Beginner 🌱';
-}
-
 const gameArea = document.getElementById('gameArea');
 const scoreEl = document.getElementById('score');
 const timeEl = document.getElementById('time');
+const scoreBox = document.getElementById('scoreBox');
 const startBtn = document.getElementById('startBtn');
 const resultEl = document.getElementById('result');
+const rankRows = document.querySelectorAll('.rank-table tr');
 
 let score = 0;
 let timeLeft = 45;
-let timer = null;
 let active = false;
+let timer;
+let blueTimer = null;
 
-function spawnBug(){
+/* Rank glow */
+function updateRankGlow(){
+  rankRows.forEach(r => r.classList.remove('active-rank'));
+  let activeRow;
+  rankRows.forEach(r=>{
+    if(score >= +r.dataset.min) activeRow = r;
+  });
+  if(activeRow) activeRow.classList.add('active-rank');
+}
+
+function glow(){
+  scoreBox.classList.remove('gold-glow');
+  void scoreBox.offsetWidth;
+  scoreBox.classList.add('gold-glow');
+}
+
+/* RED BUG (always present) */
+function spawnRedBug(){
   if(!active) return;
 
-  gameArea.innerHTML = '';
-
   const bug = document.createElement('div');
-  bug.className = 'bug';
+  bug.className = 'bug red';
   bug.textContent = '🐞';
 
-  const maxX = gameArea.clientWidth - 44;
-  const maxY = gameArea.clientHeight - 44;
+  bug.style.left = Math.random() * (gameArea.clientWidth - 44) + 'px';
+  bug.style.top = Math.random() * (gameArea.clientHeight - 44) + 'px';
 
-  bug.style.left = Math.random() * maxX + 'px';
-  bug.style.top = Math.random() * maxY + 'px';
-
-  bug.addEventListener('click', () => {
+  bug.onclick = () => {
+    if(!active) return;
     score++;
     scoreEl.textContent = score;
-    spawnBug();
-  });
+    glow();
+    updateRankGlow();
+    bug.remove();
+    spawnRedBug();
+  };
 
   gameArea.appendChild(bug);
 }
 
-startBtn.addEventListener('click', () => {
+/* BLUE BUG (bonus) */
+function spawnBlueBug(){
+  if(!active || document.querySelector('.bug.blue')) return;
+
+  const bug = document.createElement('div');
+  bug.className = 'bug blue';
+  bug.textContent = '💨';
+
+  let moveInterval;
+
+  function moveBug(){
+    bug.style.left = Math.random() * (gameArea.clientWidth - 44) + 'px';
+    bug.style.top = Math.random() * (gameArea.clientHeight - 44) + 'px';
+  }
+
+  moveBug();
+
+  bug.onclick = () => {
+    if(!active) return;
+    timeLeft += 5;
+    timeEl.textContent = timeLeft;
+    clearInterval(moveInterval);
+    bug.remove();
+  };
+
+  gameArea.appendChild(bug);
+
+  moveInterval = setInterval(moveBug, 900); // SLOW movement
+
+  setTimeout(() => {
+    clearInterval(moveInterval);
+    bug.remove();
+  }, 6000);
+}
+
+/* Random blue bug chance */
+function blueBugSpawner(){
+  if(!active) return;
+  if(Math.random() < 0.18){
+    spawnBlueBug();
+  }
+}
+
+/* START GAME */
+startBtn.onclick = () => {
   score = 0;
   timeLeft = 45;
   active = true;
@@ -245,7 +338,13 @@ startBtn.addEventListener('click', () => {
   resultEl.textContent = '';
   startBtn.disabled = true;
 
-  spawnBug();
+  gameArea.innerHTML = '';
+  updateRankGlow();
+
+  spawnRedBug();
+  spawnRedBug(); // keep pace fast
+
+  blueTimer = setInterval(blueBugSpawner, 1200);
 
   timer = setInterval(() => {
     timeLeft--;
@@ -253,16 +352,31 @@ startBtn.addEventListener('click', () => {
 
     if(timeLeft <= 0){
       clearInterval(timer);
+      clearInterval(blueTimer);
       active = false;
       gameArea.innerHTML = '';
       startBtn.disabled = false;
-      resultEl.textContent = `Game over! You caught ${score} bugs 🐞`;
+
+      resultEl.innerHTML = `
+        <strong>Game Over!</strong><br>
+        You caught <strong>${score}</strong> bugs 🐞<br><br>
+        <small>
+          🎁 Rewards require screen recording verification.<br>
+          <a href="../../policy.html" style="color:#3b82f6">View Policies</a><br><br>
+          <a href="mailto:info@businesspal.online?subject=Game Reward Claim"
+             style="color:#22d3ee;font-weight:700">
+             Contact us to redeem →
+          </a>
+        </small>
+      `;
     }
   }, 1000);
-});
+};
 </script>
 
 </body>
 </html>
+
+
 
 
