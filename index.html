@@ -239,11 +239,141 @@ footer{
     text-align:center;
   }
 }
+/* Popup Overlay */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  backdrop-filter: blur(4px);
+}
+
+/* Popup Card */
+.popup-card{
+  background:linear-gradient(180deg,#161616,#101010);
+  border-radius:22px;
+  padding:34px 30px;
+  max-width:420px;
+  width:92%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+  border:1px solid #262626;
+  animation:popupIn .4s ease;
+  position:relative;
+}
+
+@keyframes popupIn{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.popup-card h2{
+  margin:0 0 12px;
+  font-size:1.9rem;
+}
+
+.popup-card p{
+  color:#a1a1aa;
+  margin-bottom:22px;
+  line-height:1.5;
+}
+
+/* Buttons */
+.popup-actions{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-bottom:16px;
+}
+
+.popup-btn{
+  padding:12px 22px;
+  border-radius:14px;
+  font-weight:700;
+  border:0;
+  cursor:pointer;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.popup-btn.primary{
+  color:#fff;
+  background:linear-gradient(135deg,#3b82f6,#22d3ee);
+  box-shadow:0 10px 30px rgba(59,130,246,.35);
+}
+
+.popup-btn.primary:hover{
+  transform:translateY(-2px);
+}
+
+.popup-btn.secondary{
+  background:#1f2933;
+  color:#d1d5db;
+}
+
+.popup-btn.secondary:hover{
+  background:#2a3441;
+}
+
+/* Close */
+.popup-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  background:none;
+  border:0;
+  font-size:1.6rem;
+  color:#9ca3af;
+  cursor:pointer;
+}
+
+.popup-close:hover{
+  color:#fff;
+}
+
+.popup-card small{
+  color:#9ca3af;
+}
+
+.popup-card small a{
+  color:#3b82f6;
+}
 
 </style>
 </head>
 
 <body>
+<!-- Game Promo Popup -->
+<div id="gamePopup" class="popup-overlay">
+  <div class="popup-card">
+    <button class="popup-close" onclick="closePopup()">×</button>
+
+    <h2>🎮 Win a Free Website</h2>
+    <p>
+      Think you’re fast enough?<br>
+      Play our <strong>Catch the Bug</strong> game and reach
+      <strong>400+ points</strong> to qualify for a <strong>FREE website</strong>.
+    </p>
+
+    <div class="popup-actions">
+      <a href="games/catch-the-bug/index.html" class="popup-btn primary">
+        ▶ Play Now
+      </a>
+      <button class="popup-btn secondary" onclick="closePopup()">
+        Maybe Later
+      </button>
+    </div>
+
+    <small>
+      Screen recording required to claim rewards.
+      <a href="policy.html">View policy</a>
+    </small>
+  </div>
+</div>
+
 <div id="cookie-banner" class="cookie-banner">
   <p>
     This website uses cookies to ensure it functions properly.
@@ -482,6 +612,22 @@ footer{
 </div>
 
 <script>
+const popup = document.getElementById('gamePopup');
+
+function closePopup(){
+  popup.style.display = 'none';
+  localStorage.setItem('gamePopupSeen', 'yes');
+}
+
+window.addEventListener('load', () => {
+  if(!localStorage.getItem('gamePopupSeen')){
+    setTimeout(() => {
+      popup.style.display = 'flex';
+    }, 800); // delay for nicer UX
+  }else{
+    popup.style.display = 'none';
+  }
+});
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Reveal on scroll
