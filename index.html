@@ -440,78 +440,6 @@ footer{
   border-color:#3b82f6;
   color:#fff;
 }
-.main-nav{
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-
-/* Standard links */
-.main-nav a,
-.nav-dropdown span{
-  font-weight:600;
-  cursor:pointer;
-  color:#fff;
-  transition:.2s ease;
-}
-
-.main-nav a:hover,
-.nav-dropdown span:hover{
-  color:var(--accent);
-}
-
-/* CTA button */
-.nav-cta{
-  padding:10px 18px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  font-weight:800;
-  box-shadow:0 8px 26px rgba(59,130,246,.35);
-}
-
-.nav-cta:hover{
-  transform:translateY(-1px);
-}
-
-/* Dropdown */
-.nav-dropdown{
-  position:relative;
-}
-
-.dropdown-menu{
-  position:absolute;
-  top:130%;
-  left:0;
-  background:#0f0f0f;
-  border:1px solid #262626;
-  border-radius:14px;
-  min-width:220px;
-  padding:10px;
-  opacity:0;
-  pointer-events:none;
-  transform:translateY(-10px);
-  transition:.25s ease;
-  box-shadow:0 20px 50px rgba(0,0,0,.7);
-  z-index:999;
-}
-
-.dropdown-menu a{
-  display:block;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:600;
-}
-
-.dropdown-menu a:hover{
-  background:#1f2933;
-}
-
-/* Show dropdown */
-.nav-dropdown:hover .dropdown-menu{
-  opacity:1;
-  pointer-events:auto;
-  transform:translateY(0);
-}
 
 
 </style>
@@ -565,25 +493,14 @@ footer{
         <small style="color:var(--muted)">Web Design Northern Ireland & UK</small>
       </div>
     </div>
-   <nav class="main-nav">
-  <a href="advertise.html">Advertising</a>
+   <nav>
+     <a href="advertise.html">Advertising_Space</a>
   <a href="#services">Services</a>
   <a href="#process">Process</a>
-
-  <div class="nav-dropdown">
-  <button class="dropdown-toggle" onclick="toggleDropdown(event)">
-    Tools ▾
-  </button>
-
-  <div class="dropdown-menu" id="toolsDropdown">
-    <a href="name.html">Business Name Generator</a>
-    <a href="games.html">Games</a>
-  </div>
-</div>
-
-
-  <a href="#contact" class="nav-cta">Contact</a>
-</nav>
+  <a href="#subscription">Support</a>
+  <a href="#contact">Contact</a>
+  <a href="name.html">Business Name Generator</a>
+  <a href="games.html">Games</a>
 
 </nav>
 
@@ -593,22 +510,17 @@ footer{
   </div>
 </header>
 <div id="mobileNav" class="mobile-nav">
-  <a href="advertise.html" onclick="toggleMenu()">Advertising</a>
+ <a href="advertise.html">Advertising_Space</a>
   <a href="#services" onclick="toggleMenu()">Services</a>
   <a href="#process" onclick="toggleMenu()">Process</a>
-
-  <a href="name.html" onclick="toggleMenu()">Business Name Generator</a>
-  <a href="games.html" onclick="toggleMenu()">Games</a>
-
-  <a href="#contact" onclick="toggleMenu()" style="color:#3b82f6;font-weight:800">
-    Contact
-  </a>
-
+  <a href="#subscription" onclick="toggleMenu()">Support</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="name.html">Business Name Generator</a>
+    <a href="games.html" onclick="toggleMenu()">games</a>
   <a href="policy.html" onclick="toggleMenu()" style="color:#9ca3af">
     Policies & Terms
   </a>
 </div>
-
 
 
 <!-- HERO -->
