@@ -197,12 +197,62 @@ footer{
   font-size:.9rem;
   color:var(--muted);
 }
+/* Cookie Banner */
+.cookie-banner{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  right:20px;
+  max-width:900px;
+  margin:auto;
+  background:#161616;
+  border:1px solid #262626;
+  border-radius:16px;
+  padding:18px 22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  z-index:1000;
+}
+
+.cookie-banner p{
+  margin:0;
+  color:#e5e7eb;
+  font-size:.95rem;
+}
+
+.cookie-banner a{
+  color:var(--accent);
+  font-weight:600;
+}
+
+.cookie-banner button{
+  white-space:nowrap;
+}
+
+@media(max-width:600px){
+  .cookie-banner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
 
 </style>
 </head>
 
 <body>
+<div id="cookie-banner" class="cookie-banner">
+  <p>
+    This website uses cookies to ensure it functions properly.
+    By continuing to use this site, you agree to our
+    <a href="policy.html" target="_blank">Privacy & Cookie Policy</a>.
+  </p>
+  <button class="btn" type="button" onclick="acceptCookies()">Accept</button>
 
+</div>
 <header>
   <div class="header-inner">
     <div class="logo">
@@ -451,7 +501,22 @@ function toggleMenu(){
   document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
 
+(function(){
 
+  const banner = document.getElementById('cookie-banner');
+
+  if(!banner) return;
+
+  if(localStorage.getItem('cookiesAccepted') === 'true'){
+    banner.style.display = 'none';
+  }
+
+  window.acceptCookies = function(){
+    localStorage.setItem('cookiesAccepted', 'true');
+    banner.style.display = 'none';
+  };
+
+})();
 </script>
 
 </body>
