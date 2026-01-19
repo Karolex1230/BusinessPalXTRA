@@ -3,72 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Website Builder | BusinessPal</title>
+<title>BusinessPal Website Builder</title>
 
 <style>
 *{box-sizing:border-box}
 
-body{
+html,body{
   margin:0;
   font-family:Inter,system-ui,Arial;
-  background:#0b0b0b;
+  background:#0a0a0a;
   color:#fff;
+  height:100%;
+  touch-action:manipulation;
+}
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:14px;
+  left:14px;
+  z-index:50;
+  background:#3b82f6;
+  color:#fff;
+  padding:12px 14px;
+  border-radius:12px;
+  border:none;
+  font-size:18px;
+}
+
+/* Layout */
+.builder{
   display:flex;
   height:100vh;
   overflow:hidden;
 }
 
-/* ---------- SIDEBAR ---------- */
+/* Sidebar */
 .sidebar{
-  width:260px;
+  width:280px;
   background:#000;
-  border-right:1px solid #1f2933;
+  border-right:1px solid #222;
   padding:16px;
   display:flex;
   flex-direction:column;
   gap:10px;
+  z-index:20;
 }
 
-.sidebar h2{
-  font-size:1.3rem;
-  margin-bottom:6px;
-}
+.sidebar h2{margin:0 0 10px}
 
 .sidebar button,
 .sidebar select,
-.sidebar input{
-  width:100%;
+.sidebar input[type="color"],
+.sidebar input[type="range"]{
   padding:12px;
-  border-radius:10px;
+  border-radius:12px;
   border:none;
   background:#1f2933;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
 }
 
-.sidebar button:active{
-  background:#2563eb;
+.sidebar button.primary{background:#3b82f6}
+.sidebar button.secondary{background:#22d3ee;color:#000}
+.sidebar button.fun{background:#9333ea}
+
+.sidebar small{
+  color:#9ca3af;
+  line-height:1.4;
 }
 
-/* ---------- MOBILE ---------- */
-@media(max-width:900px){
-  body{flex-direction:column}
-  .sidebar{
-    width:100%;
-    flex-direction:row;
-    overflow-x:auto;
-    border-right:none;
-    border-bottom:1px solid #1f2933;
-  }
-  .sidebar h2,
-  .sidebar small,
-  .sidebar hr{
-    display:none;
-  }
+.back-home{
+  margin-top:auto;
+  border:2px solid #3b82f6;
+  background:transparent;
 }
 
-/* ---------- CANVAS ---------- */
+/* Canvas */
 .canvas{
   flex:1;
   background:#e5e7eb;
@@ -82,85 +94,123 @@ body{
   min-height:100vh;
 }
 
-/* ---------- SECTIONS ---------- */
+/* Sections */
 .section{
   padding:60px 30px;
   border:2px dashed transparent;
   position:relative;
 }
 
-.section.selected{
-  border-color:#2563eb;
-}
+.section.selected{border-color:#3b82f6}
 
-/* ---------- BLOCK STYLES ---------- */
+/* Blocks */
 .hero{
-  background:#2563eb;
+  background:#3b82f6;
   color:#fff;
   text-align:center;
 }
 
-.text{
-  color:#111;
+.text{color:#000}
+
+.columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-/* ---------- TOOLBAR ---------- */
+.footer{
+  background:#0f172a;
+  color:#fff;
+  text-align:center;
+}
+
+/* Responsive columns */
+@media(max-width:700px){
+  .columns{grid-template-columns:1fr}
+}
+
+/* Toolbar */
 .toolbar{
   position:fixed;
   bottom:20px;
   left:50%;
   transform:translateX(-50%);
   background:#000;
-  border-radius:14px;
+  border-radius:16px;
   padding:10px;
   display:none;
-  gap:10px;
-  z-index:50;
+  gap:8px;
+  z-index:40;
 }
 
 .toolbar button{
+  padding:10px 14px;
+  border:none;
+  border-radius:10px;
   background:#1f2933;
   color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:600;
+  font-weight:700;
+}
+
+/* Mobile */
+@media(max-width:900px){
+  .mobile-menu{display:block}
+
+  .sidebar{
+    position:fixed;
+    left:-100%;
+    top:0;
+    height:100%;
+    transition:.3s;
+  }
+  .sidebar.open{left:0}
+
+  .toolbar{
+    bottom:0;
+    left:0;
+    transform:none;
+    width:100%;
+    border-radius:18px 18px 0 0;
+    justify-content:space-around;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ---------- SIDEBAR ---------- -->
+<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
+<div class="builder">
+
+<!-- SIDEBAR -->
 <div class="sidebar">
   <h2>BusinessPal Builder</h2>
 
-  <select onchange="addBlock(this.value)">
-    <option value="">+ Add Section</option>
-    <option value="hero">Hero</option>
-    <option value="text">Text</option>
-    <option value="button">Button</option>
-    <option value="image">Image</option>
-    <option value="columns">Columns</option>
-    <option value="card">Card</option>
-    <option value="contact">Contact Form</option>
-    <option value="footer">Footer</option>
-  </select>
+  <button class="primary" onclick="addHero()">Add Hero</button>
+  <button onclick="addText()">Add Text</button>
+  <button onclick="addImage()">Add Image</button>
+  <button onclick="addColumns()">Add Columns</button>
+  <button onclick="addButton()">Add Button</button>
+  <button onclick="addDivider()">Add Divider</button>
+  <button onclick="addSpacer()">Add Spacer</button>
 
-  <hr>
+  <button class="fun" onclick="generateFullSite()">✨ Generate Full Site</button>
+
+  <hr style="border-color:#222">
 
   <label>Padding</label>
-  <input type="range" min="0" max="120" value="60" oninput="setPadding(this.value)">
+  <input type="range" min="0" max="150" value="60" oninput="setPadding(this.value)">
 
-  <label>Text alignment</label>
+  <label>Text Align</label>
   <select onchange="setAlign(this.value)">
     <option value="">Default</option>
-    <option value="left">Left</option>
-    <option value="center">Center</option>
-    <option value="right">Right</option>
+    <option>left</option>
+    <option>center</option>
+    <option>right</option>
   </select>
 
-  <label>Max width</label>
+  <label>Max Width</label>
   <select onchange="setWidth(this.value)">
     <option value="">Auto</option>
     <option value="600px">600px</option>
@@ -169,162 +219,184 @@ body{
   </select>
 
   <label>Background</label>
-  <input type="color" onchange="setBackground(this.value)">
+  <input type="color" onchange="setBg(this.value)">
 
   <small>
-    Build your website visually.<br>
-    Edit content directly and export clean HTML.
+    Build modern websites visually.<br>
+    Fully responsive and export-ready.
   </small>
 
-  <button onclick="location.href='index.html'">← Back to Home</button>
+  <button class="back-home" onclick="location.href='index.html'">← Back to Home</button>
+
+  <input type="file" id="imageUpload" accept="image/*" hidden onchange="handleImage(event)">
 </div>
 
-<!-- ---------- CANVAS ---------- -->
+<!-- CANVAS -->
 <div class="canvas">
   <div id="site" class="site"></div>
 </div>
 
-<!-- ---------- TOOLBAR ---------- -->
+</div>
+
+<!-- TOOLBAR -->
 <div class="toolbar" id="toolbar">
-  <button onclick="duplicateSection()">Duplicate</button>
-  <button onclick="deleteSection()">Delete</button>
+  <button onclick="moveUp()">↑</button>
+  <button onclick="moveDown()">↓</button>
+  <button onclick="duplicate()">Duplicate</button>
+  <button onclick="removeSection()">Delete</button>
 </div>
 
 <script>
-const site = document.getElementById('site');
-const toolbar = document.getElementById('toolbar');
+const site=document.getElementById('site');
+const toolbar=document.getElementById('toolbar');
+let selected=null;
 
-let selected = null;
-let dragging = null;
-let startY = 0;
+/* Sidebar */
+function toggleSidebar(){
+  document.querySelector('.sidebar').classList.toggle('open');
+}
 
-/* ---------- CORE ---------- */
+/* Core */
 function makeSection(html){
-  const div = document.createElement('div');
-  div.className = 'section';
-  div.innerHTML = html;
-  enableSection(div);
+  const div=document.createElement('div');
+  div.className='section';
+  div.innerHTML=html;
+  div.onclick=e=>{e.stopPropagation();select(div)};
   site.appendChild(div);
 }
 
-function enableSection(el){
-  el.addEventListener('pointerdown', e=>{
-    select(el);
-    dragging = el;
-    startY = e.clientY;
-  });
-
-  el.addEventListener('pointermove', e=>{
-    if(!dragging) return;
-    const dy = e.clientY - startY;
-    const target = document.elementFromPoint(e.clientX, e.clientY)?.closest('.section');
-    if(target && target !== dragging){
-      site.insertBefore(dragging, dy > 0 ? target.nextSibling : target);
-    }
-  });
-
-  el.addEventListener('pointerup', ()=> dragging = null);
-}
-
-/* ---------- SELECTION ---------- */
 function select(el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('selected'));
-  selected = el;
+  selected=el;
   el.classList.add('selected');
-  toolbar.style.display = 'flex';
+  toolbar.style.display='flex';
 }
 
-/* ---------- INSPECTOR ---------- */
-function setPadding(v){ if(selected) selected.style.padding = v + 'px'; }
-function setAlign(v){ if(selected) selected.style.textAlign = v; }
-function setWidth(v){
-  if(selected){
-    selected.style.maxWidth = v;
-    selected.style.margin = 'auto';
-  }
-}
-function setBackground(v){ if(selected) selected.style.background = v; }
-
-/* ---------- ACTIONS ---------- */
-function duplicateSection(){
-  if(!selected) return;
-  const clone = selected.cloneNode(true);
-  enableSection(clone);
-  site.insertBefore(clone, selected.nextSibling);
+/* Blocks */
+function addHero(){
+  makeSection(`<div class="hero">
+    <h1 contenteditable>Your Business Title</h1>
+    <p contenteditable>Your business description</p>
+  </div>`);
 }
 
-function deleteSection(){
-  if(selected){
-    selected.remove();
-    toolbar.style.display = 'none';
-  }
+function addText(){
+  makeSection(`<div class="text">
+    <p contenteditable>Edit your text here</p>
+  </div>`);
 }
 
-/* ---------- BLOCKS ---------- */
-function addBlock(type){
-  if(!type) return;
-
-  const blocks = {
-    hero: `
-      <div class="hero">
-        <h1 contenteditable>Grow your business online</h1>
-        <p contenteditable>Everything you need to get started</p>
-      </div>
-    `,
-    text: `
-      <div class="text">
-        <p contenteditable>Click to edit this text.</p>
-      </div>
-    `,
-    button: `
-      <div style="text-align:center">
-        <a contenteditable style="
-          display:inline-block;
-          padding:14px 26px;
-          background:#2563eb;
-          color:#fff;
-          border-radius:12px;
-          font-weight:700;
-          text-decoration:none">
-          Call to Action
-        </a>
-      </div>
-    `,
-    image: `
-      <img src="https://via.placeholder.com/900x400" style="max-width:100%;border-radius:14px">
-    `,
-    columns: `
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-        <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Column 1</div>
-        <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Column 2</div>
-      </div>
-    `,
-    card: `
-      <div style="background:#f9fafb;padding:30px;border-radius:18px">
-        <h3 contenteditable>Card Title</h3>
-        <p contenteditable>Card description text</p>
-      </div>
-    `,
-    contact: `
-      <form>
-        <input placeholder="Name" style="width:100%;padding:12px;margin-bottom:10px">
-        <input placeholder="Email" style="width:100%;padding:12px;margin-bottom:10px">
-        <textarea placeholder="Message" style="width:100%;padding:12px"></textarea>
-      </form>
-    `,
-    footer: `
-      <footer style="background:#000;color:#fff;text-align:center;padding:40px">
-        © BusinessPal
-      </footer>
-    `
-  };
-
-  makeSection(blocks[type]);
+function addColumns(){
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Feature One</div>
+    <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Feature Two</div>
+  </div>`);
 }
+
+function addButton(){
+  makeSection(`<div style="text-align:center">
+    <a contenteditable style="display:inline-block;padding:14px 28px;background:#3b82f6;color:#fff;border-radius:14px;font-weight:800;text-decoration:none">
+      Call to Action
+    </a>
+  </div>`);
+}
+
+function addDivider(){makeSection(`<hr>`)}
+function addSpacer(){makeSection(`<div style="height:80px"></div>`)}
+function addImage(){imageUpload.click()}
+
+function handleImage(e){
+  const r=new FileReader();
+  r.onload=()=>makeSection(`<img src="${r.result}" style="max-width:100%">`);
+  r.readAsDataURL(e.target.files[0]);
+}
+
+/* FULL SITE GENERATOR */
+function generateFullSite(){
+  site.innerHTML="";
+
+  const palettes=[
+    {p:"#3b82f6",a:"#22d3ee"},
+    {p:"#9333ea",a:"#f472b6"},
+    {p:"#16a34a",a:"#86efac"}
+  ];
+  const c=palettes[Math.floor(Math.random()*palettes.length)];
+
+  makeSection(`<div class="hero" style="background:${c.p}">
+    <h1 contenteditable>Grow Your Business Smarter</h1>
+    <p contenteditable>Everything you need to launch and scale online.</p>
+    <a contenteditable style="display:inline-block;margin-top:20px;padding:14px 32px;background:${c.a};color:#000;border-radius:14px;font-weight:800;text-decoration:none">
+      Get Started
+    </a>
+  </div>`);
+
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Fast Setup</h3>
+      <p>Launch your website in minutes.</p>
+    </div>
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Mobile Ready</h3>
+      <p>Looks great on all devices.</p>
+    </div>
+  </div>`);
+
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Custom Design</h3>
+      <p>Edit everything visually.</p>
+    </div>
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Export Ready</h3>
+      <p>Download clean HTML.</p>
+    </div>
+  </div>`);
+
+  makeSection(`<div style="text-align:center">
+    <h2 contenteditable>Ready to get started?</h2>
+    <a contenteditable style="display:inline-block;margin-top:20px;padding:16px 36px;background:${c.p};color:#fff;border-radius:16px;font-weight:800;text-decoration:none">
+      Contact Us
+    </a>
+  </div>`);
+
+  makeSection(`<div class="footer">
+    <p contenteditable>© BusinessPal ${new Date().getFullYear()}</p>
+  </div>`);
+}
+
+/* Controls */
+function setPadding(v){if(selected)selected.style.padding=v+'px'}
+function setAlign(v){if(selected)selected.style.textAlign=v}
+function setWidth(v){if(selected){selected.style.maxWidth=v;selected.style.margin='auto'}}
+function setBg(c){if(selected)selected.style.background=c}
+
+/* Reorder */
+function moveUp(){
+  if(selected&&selected.previousElementSibling)
+    site.insertBefore(selected,selected.previousElementSibling);
+}
+function moveDown(){
+  if(selected&&selected.nextElementSibling)
+    site.insertBefore(selected.nextElementSibling,selected);
+}
+function duplicate(){
+  if(!selected)return;
+  const clone=selected.cloneNode(true);
+  clone.onclick=e=>{e.stopPropagation();select(clone)};
+  site.insertBefore(clone,selected.nextElementSibling);
+}
+function removeSection(){
+  if(selected){selected.remove();toolbar.style.display='none'}
+}
+
+/* Deselect */
+document.body.onclick=()=>toolbar.style.display='none';
 </script>
 
 </body>
 </html>
+
+
 
 
 
