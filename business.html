@@ -1,0 +1,367 @@
+<<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Business Idea Generator Pro | BusinessPal</title>
+<meta name="description" content="Generate advanced business ideas with monetisation, risk analysis and target audience insights.">
+
+<style>
+:root{
+  --accent:#6366f1;
+  --accent2:#22d3ee;
+  --bg:#0a0a0a;
+  --panel:#0f172a;
+  --card:#020617;
+  --border:#1f2937;
+  --muted:#9ca3af;
+  --text:#f8fafc;
+  --success:#22c55e;
+  --warning:#facc15;
+  --danger:#ef4444;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  padding:20px;
+}
+
+header a{
+  text-decoration:none;
+  font-weight:900;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 30px rgba(99,102,241,.4);
+}
+
+/* WRAPPER */
+.wrapper{
+  max-width:1200px;
+  margin:0 auto;
+  padding:40px 20px 80px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.hero h1{
+  font-size:2.7rem;
+  margin-bottom:14px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:1.1rem;
+  max-width:820px;
+  margin:0 auto;
+}
+
+/* PANEL */
+.panel{
+  background:linear-gradient(180deg,#0b1220,#020617);
+  border-radius:30px;
+  padding:36px;
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+}
+
+/* FORM */
+.form-grid{
+  display:grid;
+  gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+
+label{
+  display:block;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+select{
+  width:100%;
+  padding:14px 16px;
+  border-radius:14px;
+  border:none;
+  background:var(--card);
+  color:#fff;
+  font-size:1rem;
+}
+
+/* BUTTONS */
+.actions{
+  margin-top:30px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+button{
+  flex:1;
+  min-width:240px;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  font-size:1.05rem;
+  font-weight:900;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 14px 40px rgba(99,102,241,.5);
+  transition:.25s ease;
+}
+
+button.secondary{
+  background:#020617;
+  border:1px solid var(--border);
+  box-shadow:none;
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+/* RESULTS */
+.results{
+  margin-top:50px;
+  display:none;
+  gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.card{
+  background:var(--card);
+  border-radius:22px;
+  padding:26px;
+  border:1px solid var(--border);
+}
+
+.card h3{
+  margin-top:0;
+  margin-bottom:12px;
+}
+
+.card p, .card li{
+  color:#e5e7eb;
+  line-height:1.6;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:800;
+  margin-right:8px;
+}
+
+.low{background:rgba(34,197,94,.2);color:var(--success)}
+.medium{background:rgba(250,204,21,.2);color:var(--warning)}
+.high{background:rgba(239,68,68,.2);color:var(--danger)}
+
+ul{padding-left:18px}
+
+/* FOOTER */
+.note{
+  margin-top:60px;
+  text-align:center;
+  font-size:.9rem;
+  color:#6b7280;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:2rem}
+  button{min-width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<main class="wrapper">
+
+<section class="hero">
+  <h1>Business Idea Generator <span style="opacity:.6">Pro</span></h1>
+  <p>
+    Advanced idea generation with feasibility analysis, monetisation strategies,
+    and realistic startup insights — built for serious founders.
+  </p>
+</section>
+
+<section class="panel">
+
+  <div class="form-grid">
+    <div>
+      <label>Budget</label>
+      <select id="budget">
+        <option value="low">Low (£0–£500)</option>
+        <option value="medium">Medium (£500–£5,000)</option>
+        <option value="high">High (£5,000+)</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Skill Level</label>
+      <select id="skill">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Business Type</label>
+      <select id="mode">
+        <option value="online">Online</option>
+        <option value="offline">Offline</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button onclick="generateIdea()">Generate Business Idea</button>
+    <button class="secondary" onclick="generateIdea()">Generate Another</button>
+  </div>
+
+  <div class="results" id="results">
+
+    <div class="card">
+      <h3>💡 Business Idea</h3>
+      <p id="idea"></p>
+    </div>
+
+    <div class="card">
+      <h3>💰 Monetisation</h3>
+      <ul id="money"></ul>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Target Audience</h3>
+      <ul id="audience"></ul>
+    </div>
+
+    <div class="card">
+      <h3>📊 Feasibility</h3>
+      <p>
+        <span id="risk" class="badge"></span>
+        <span id="difficulty" class="badge"></span>
+        <span id="time" class="badge"></span>
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<p class="note">
+  BusinessPal Pro tools are designed for planning and inspiration.
+</p>
+
+</main>
+
+<script>
+const ideas = [
+  {
+    budget:"low",skill:"beginner",mode:"online",
+    idea:"Local-focused social media management service",
+    money:["Monthly retainers","Content upsells","Ad management"],
+    audience:["Local shops","Trades","Small service businesses"],
+    risk:"low",difficulty:"low",time:"short"
+  },
+  {
+    budget:"low",skill:"intermediate",mode:"online",
+    idea:"Digital product store selling templates, planners or guides",
+    money:["One-time sales","Bundles","Email upsells"],
+    audience:["Creators","Freelancers","Small business owners"],
+    risk:"low",difficulty:"medium",time:"short"
+  },
+  {
+    budget:"medium",skill:"beginner",mode:"offline",
+    idea:"Mobile cleaning or home services business",
+    money:["Per-job pricing","Monthly subscriptions","Add-ons"],
+    audience:["Homeowners","Landlords","Airbnb hosts"],
+    risk:"medium",difficulty:"medium",time:"short"
+  },
+  {
+    budget:"medium",skill:"advanced",mode:"online",
+    idea:"Niche SaaS tool solving one specific business pain point",
+    money:["Subscriptions","Tiered pricing","Enterprise licenses"],
+    audience:["Startups","Agencies","SMEs"],
+    risk:"medium",difficulty:"high",time:"medium"
+  },
+  {
+    budget:"high",skill:"intermediate",mode:"offline",
+    idea:"Boutique gym, fitness studio or wellness centre",
+    money:["Memberships","Classes","Merchandise"],
+    audience:["Urban professionals","Health-conscious clients"],
+    risk:"high",difficulty:"high",time:"long"
+  },
+  {
+    budget:"high",skill:"advanced",mode:"online",
+    idea:"AI-powered platform for business automation or analytics",
+    money:["Subscriptions","Usage-based pricing","Enterprise plans"],
+    audience:["Growing companies","Tech startups","Consultancies"],
+    risk:"high",difficulty:"high",time:"long"
+  }
+];
+
+const riskMap={low:"Low Risk",medium:"Medium Risk",high:"High Risk"};
+const diffMap={low:"Easy",medium:"Moderate",high:"Advanced"};
+const timeMap={short:"Fast to Monetise",medium:"Mid-term Growth",long:"Long-term Build"};
+
+function badge(el,val,type){
+  el.textContent = val;
+  el.className = `badge ${type}`;
+}
+
+function generateIdea(){
+  const b=budget.value,s=skill.value,m=mode.value;
+  const matches = ideas.filter(i=>i.budget===b&&i.skill===s&&i.mode===m);
+  const pick = matches[Math.floor(Math.random()*matches.length)] || ideas[Math.floor(Math.random()*ideas.length)];
+
+  idea.textContent = pick.idea;
+
+  money.innerHTML="";
+  pick.money.forEach(x=>{
+    const li=document.createElement("li");
+    li.textContent=x;
+    money.appendChild(li);
+  });
+
+  audience.innerHTML="";
+  pick.audience.forEach(x=>{
+    const li=document.createElement("li");
+    li.textContent=x;
+    audience.appendChild(li);
+  });
+
+  badge(risk,riskMap[pick.risk],pick.risk);
+  badge(difficulty,diffMap[pick.difficulty],pick.difficulty);
+  badge(time,timeMap[pick.time],pick.time);
+
+  results.style.display="grid";
+}
+</script>
+
+</body>
+</html>
