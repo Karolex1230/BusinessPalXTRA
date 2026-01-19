@@ -14,6 +14,7 @@ body{
   color:#fff;
   display:flex;
   height:100vh;
+  overflow:hidden;
 }
 
 /* Sidebar */
@@ -21,35 +22,38 @@ body{
   width:280px;
   background:#000;
   border-right:1px solid #222;
-  padding:20px;
+  padding:16px;
   display:flex;
   flex-direction:column;
-  gap:12px;
-}
-
-.sidebar h2{
-  font-size:1.3rem;
-  margin-bottom:10px;
+  gap:10px;
+  z-index:10;
 }
 
 .sidebar button,
 .sidebar input[type="color"]{
-  padding:12px;
-  border-radius:10px;
+  padding:14px;
+  border-radius:12px;
   border:none;
   background:#1f2933;
   color:#fff;
   font-weight:700;
-  cursor:pointer;
 }
 
-.sidebar button:hover{
-  background:#3b82f6;
-}
+.sidebar button:active{background:#3b82f6}
 
-.sidebar small{
-  color:#9ca3af;
-  line-height:1.4;
+/* Mobile sidebar */
+@media(max-width:900px){
+  body{flex-direction:column}
+  .sidebar{
+    width:100%;
+    flex-direction:row;
+    overflow-x:auto;
+    border-right:none;
+    border-bottom:1px solid #222;
+  }
+  .sidebar h2,
+  .sidebar small,
+  .back-home{display:none}
 }
 
 /* Canvas */
@@ -61,10 +65,9 @@ body{
 
 .site{
   max-width:1200px;
-  margin:40px auto;
+  margin:20px auto;
   background:#fff;
-  min-height:600px;
-  padding-bottom:100px;
+  min-height:100vh;
 }
 
 /* Sections */
@@ -72,15 +75,10 @@ body{
   padding:60px 30px;
   border:2px dashed transparent;
   position:relative;
-  cursor:move;
 }
 
-.section:hover{
+.section.selected{
   border-color:#3b82f6;
-}
-
-.section[contenteditable]:focus{
-  outline:none;
 }
 
 .hero{
@@ -89,74 +87,32 @@ body{
   text-align:center;
 }
 
-.text-section{
-  color:#000;
-}
+.text-section{color:#000}
 
-.image-section img{
-  max-width:100%;
-  display:block;
-  margin:auto;
-  border-radius:14px;
-}
-
-/* Controls */
-.section-controls{
-  position:absolute;
-  top:10px;
-  right:10px;
-  display:flex;
-  gap:6px;
-}
-
-.section-controls button{
-  background:#000;
-  color:#fff;
-  border:none;
-  padding:6px 8px;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:.8rem;
-}
-
-/* Floating bar */
-.bottom-bar{
+/* Floating toolbar */
+.toolbar{
   position:fixed;
   bottom:20px;
-  right:20px;
-  display:flex;
-  gap:14px;
-}
-
-.bottom-bar button{
-  padding:14px 26px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#000;
   border-radius:14px;
+  padding:10px;
+  display:none;
+  gap:8px;
+  z-index:20;
+}
+
+.toolbar button{
+  padding:10px 14px;
   border:none;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.export{
-  background:#22d3ee;
-}
-
-.save{
-  background:#3b82f6;
+  border-radius:10px;
+  background:#1f2933;
   color:#fff;
-}
-
-/* Back */
-.back-home{
-  margin-top:auto;
-  background:transparent;
-  border:2px solid #3b82f6;
-  color:#3b82f6;
-}
-.back-home:hover{
-  background:#3b82f6;
-  color:#fff;
+  font-weight:700;
 }
 </style>
+
 </head>
 
 <body>
@@ -203,29 +159,54 @@ body{
 
 <script>
 const site = document.getElementById('site');
-let dragged;
+let selected = null;
+let dragEl = null;
+let startY = 0;
 
-/* Utilities */
+/* Section creator */
 function makeSection(html){
   const div = document.createElement('div');
   div.className = 'section';
-  div.draggable = true;
-  div.innerHTML = `
-    <div class="section-controls">
-      <button onclick="this.closest('.section').remove()">✕</button>
-    </div>
-    ${html}
-  `;
-  addDrag(div);
+  div.innerHTML = html;
+  enableSection(div);
   site.appendChild(div);
+}
+
+/* Enable selection + touch drag */
+function enableSection(el){
+  el.addEventListener('pointerdown', e=>{
+    select(el);
+    dragEl = el;
+    startY = e.clientY;
+    el.setPointerCapture(e.pointerId);
+  });
+
+  el.addEventListener('pointermove', e=>{
+    if(!dragEl) return;
+    const dy = e.clientY - startY;
+    const target = document.elementFromPoint(e.clientX, e.clientY);
+    if(target && target.closest('.section') && target !== dragEl){
+      site.insertBefore(dragEl, dy > 0 ? target.nextSibling : target);
+    }
+  });
+
+  el.addEventListener('pointerup', ()=> dragEl = null);
+}
+
+/* Selection */
+function select(el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('selected'));
+  selected = el;
+  el.classList.add('selected');
+  toolbar.style.display = 'flex';
 }
 
 /* Sections */
 function addHero(){
   makeSection(`
     <div class="hero">
-      <h1 contenteditable="true">Your Website Title</h1>
-      <p contenteditable="true">Describe your business here</p>
+      <h1 contenteditable>Your Website Title</h1>
+      <p contenteditable>Describe your business</p>
     </div>
   `);
 }
@@ -233,9 +214,7 @@ function addHero(){
 function addText(){
   makeSection(`
     <div class="text-section">
-      <p contenteditable="true">
-        Click to edit this text and explain your service.
-      </p>
+      <p contenteditable>Click to edit text</p>
     </div>
   `);
 }
@@ -246,75 +225,59 @@ function addImage(){
 
 function handleImage(e){
   const file = e.target.files[0];
-  if(!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    makeSection(`
-      <div class="image-section">
-        <img src="${reader.result}">
-      </div>
-    `);
-  };
-  reader.readAsDataURL(file);
+  const r = new FileReader();
+  r.onload = ()=>makeSection(`<img src="${r.result}" style="max-width:100%">`);
+  r.readAsDataURL(file);
 }
 
-/* Drag & drop */
-function addDrag(el){
-  el.addEventListener('dragstart', () => dragged = el);
-  el.addEventListener('dragover', e => e.preventDefault());
-  el.addEventListener('drop', () => {
-    site.insertBefore(dragged, el);
-  });
+/* Toolbar actions */
+function removeSection(){
+  if(selected){selected.remove(); toolbar.style.display='none';}
 }
 
-/* Background */
-function changeBackground(color){
-  site.style.background = color;
+function duplicateSection(){
+  if(!selected) return;
+  const clone = selected.cloneNode(true);
+  enableSection(clone);
+  site.insertBefore(clone, selected.nextSibling);
 }
 
-/* Save */
+function bgColor(color){
+  if(selected) selected.style.background = color;
+}
+
+/* Save & Load */
 function saveSite(){
   localStorage.setItem('savedSite', site.innerHTML);
-  alert('Website saved locally. You can return later.');
+  alert('Saved');
 }
 
-/* Load */
-window.onload = () => {
-  const saved = localStorage.getItem('savedSite');
+window.onload=()=>{
+  const saved=localStorage.getItem('savedSite');
   if(saved){
-    site.innerHTML = saved;
-    document.querySelectorAll('.section').forEach(addDrag);
+    site.innerHTML=saved;
+    document.querySelectorAll('.section').forEach(enableSection);
   }
-};
+}
 
 /* Export */
 function exportHTML(){
-  const html = `
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Your Website</title>
-<style>
-body{font-family:Arial;margin:0}
-.section{padding:60px 30px}
-.hero{background:#3b82f6;color:#fff;text-align:center}
-img{max-width:100%}
-</style>
-</head>
-<body>
-${site.innerHTML}
-</body>
-</html>
-`;
-  const blob = new Blob([html],{type:"text/html"});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'my-website.html';
+  const clean = site.cloneNode(true);
+  clean.querySelectorAll('.section').forEach(s=>s.classList.remove('selected'));
+  const html=`<!doctype html><html><head><meta name="viewport" content="width=device-width"><style>body{margin:0;font-family:Arial}.section{padding:60px}</style></head><body>${clean.innerHTML}</body></html>`;
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='site.html';
   a.click();
 }
 </script>
+
+<div class="toolbar" id="toolbar">
+  <button onclick="duplicateSection()">Duplicate</button>
+  <button onclick="removeSection()">Delete</button>
+  <input type="color" onchange="bgColor(this.value)">
+</div>
 
 </body>
 </html>
