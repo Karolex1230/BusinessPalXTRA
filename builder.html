@@ -3,17 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visual Website Builder | BusinessPal</title>
+<title>BusinessPal Website Builder</title>
 
 <style>
 *{box-sizing:border-box}
-body{
+
+html,body{
   margin:0;
   font-family:Inter,system-ui,Arial;
   background:#0a0a0a;
   color:#fff;
+  height:100%;
+  touch-action:manipulation;
+}
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:14px;
+  left:14px;
+  z-index:50;
+  background:#3b82f6;
+  color:#fff;
+  padding:12px 14px;
+  border-radius:12px;
+  border:none;
+  font-size:18px;
+}
+
+/* Layout */
+.builder{
   display:flex;
   height:100vh;
+  overflow:hidden;
 }
 
 /* Sidebar */
@@ -21,35 +44,40 @@ body{
   width:280px;
   background:#000;
   border-right:1px solid #222;
-  padding:20px;
+  padding:16px;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:10px;
+  z-index:20;
 }
 
-.sidebar h2{
-  font-size:1.3rem;
-  margin-bottom:10px;
-}
+.sidebar h2{margin:0 0 10px}
 
 .sidebar button,
-.sidebar input[type="color"]{
+.sidebar select,
+.sidebar input[type="color"],
+.sidebar input[type="range"]{
   padding:12px;
-  border-radius:10px;
+  border-radius:12px;
   border:none;
   background:#1f2933;
   color:#fff;
   font-weight:700;
-  cursor:pointer;
 }
 
-.sidebar button:hover{
-  background:#3b82f6;
-}
+.sidebar button.primary{background:#3b82f6}
+.sidebar button.secondary{background:#22d3ee;color:#000}
+.sidebar button.fun{background:#9333ea}
 
 .sidebar small{
   color:#9ca3af;
   line-height:1.4;
+}
+
+.back-home{
+  margin-top:auto;
+  border:2px solid #3b82f6;
+  background:transparent;
 }
 
 /* Canvas */
@@ -61,10 +89,9 @@ body{
 
 .site{
   max-width:1200px;
-  margin:40px auto;
+  margin:20px auto;
   background:#fff;
-  min-height:600px;
-  padding-bottom:100px;
+  min-height:100vh;
 }
 
 /* Sections */
@@ -72,120 +99,134 @@ body{
   padding:60px 30px;
   border:2px dashed transparent;
   position:relative;
-  cursor:move;
 }
 
-.section:hover{
-  border-color:#3b82f6;
-}
+.section.selected{border-color:#3b82f6}
 
-.section[contenteditable]:focus{
-  outline:none;
-}
-
+/* Blocks */
 .hero{
   background:#3b82f6;
   color:#fff;
   text-align:center;
 }
 
-.text-section{
-  color:#000;
+.text{color:#000}
+
+.columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-.image-section img{
-  max-width:100%;
-  display:block;
-  margin:auto;
-  border-radius:14px;
-}
-
-/* Controls */
-.section-controls{
-  position:absolute;
-  top:10px;
-  right:10px;
-  display:flex;
-  gap:6px;
-}
-
-.section-controls button{
-  background:#000;
+.footer{
+  background:#0f172a;
   color:#fff;
-  border:none;
-  padding:6px 8px;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:.8rem;
+  text-align:center;
 }
 
-/* Floating bar */
-.bottom-bar{
+/* Responsive columns */
+@media(max-width:700px){
+  .columns{grid-template-columns:1fr}
+}
+
+/* Toolbar */
+.toolbar{
   position:fixed;
   bottom:20px;
-  right:20px;
-  display:flex;
-  gap:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#000;
+  border-radius:16px;
+  padding:10px;
+  display:none;
+  gap:8px;
+  z-index:40;
 }
 
-.bottom-bar button{
-  padding:14px 26px;
-  border-radius:14px;
+.toolbar button{
+  padding:10px 14px;
   border:none;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.export{
-  background:#22d3ee;
-}
-
-.save{
-  background:#3b82f6;
+  border-radius:10px;
+  background:#1f2933;
   color:#fff;
+  font-weight:700;
 }
 
-/* Back */
-.back-home{
-  margin-top:auto;
-  background:transparent;
-  border:2px solid #3b82f6;
-  color:#3b82f6;
-}
-.back-home:hover{
-  background:#3b82f6;
-  color:#fff;
+/* Mobile */
+@media(max-width:900px){
+  .mobile-menu{display:block}
+
+  .sidebar{
+    position:fixed;
+    left:-100%;
+    top:0;
+    height:100%;
+    transition:.3s;
+  }
+  .sidebar.open{left:0}
+
+  .toolbar{
+    bottom:0;
+    left:0;
+    transform:none;
+    width:100%;
+    border-radius:18px 18px 0 0;
+    justify-content:space-around;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
+<div class="builder">
+
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <h2>Website Builder</h2>
+  <h2>BusinessPal Builder</h2>
 
-  <button onclick="addHero()">Add Hero</button>
+  <button class="primary" onclick="addHero()">Add Hero</button>
   <button onclick="addText()">Add Text</button>
   <button onclick="addImage()">Add Image</button>
+  <button onclick="addColumns()">Add Columns</button>
+  <button onclick="addButton()">Add Button</button>
+  <button onclick="addDivider()">Add Divider</button>
+  <button onclick="addSpacer()">Add Spacer</button>
 
-  <label style="margin-top:10px">Background colour</label>
-  <input type="color" onchange="changeBackground(this.value)">
+  <button class="fun" onclick="generateFullSite()">✨ Generate Full Site</button>
+
+  <hr style="border-color:#222">
+
+  <label>Padding</label>
+  <input type="range" min="0" max="150" value="60" oninput="setPadding(this.value)">
+
+  <label>Text Align</label>
+  <select onchange="setAlign(this.value)">
+    <option value="">Default</option>
+    <option>left</option>
+    <option>center</option>
+    <option>right</option>
+  </select>
+
+  <label>Max Width</label>
+  <select onchange="setWidth(this.value)">
+    <option value="">Auto</option>
+    <option value="600px">600px</option>
+    <option value="900px">900px</option>
+    <option value="1200px">1200px</option>
+  </select>
+
+  <label>Background</label>
+  <input type="color" onchange="setBg(this.value)">
 
   <small>
-  Build your website visually.<br>
-  You can save your progress and send it to BusinessPal for professional completion.
-  <br><br>
-  <strong>Please note:</strong> This website builder is currently in an active testing and rebuild phase.
-  Some features may be incomplete or behave unexpectedly as we continue improving the experience.
-  
-  <strong>CURRENTLY NOT WORKING ON MOBILE</strong>
-</small>
+    Build modern websites visually.<br>
+    Fully responsive and export-ready.
+  </small>
 
-
-  <button class="back-home" onclick="location.href='index.html'">
-    ← Back to Home
-  </button>
+  <button class="back-home" onclick="location.href='index.html'">← Back to Home</button>
 
   <input type="file" id="imageUpload" accept="image/*" hidden onchange="handleImage(event)">
 </div>
@@ -195,128 +236,168 @@ body{
   <div id="site" class="site"></div>
 </div>
 
-<!-- ACTION BAR -->
-<div class="bottom-bar">
-  <button class="save" onclick="saveSite()">Save</button>
-  <button class="export" onclick="exportHTML()">Download</button>
+</div>
+
+<!-- TOOLBAR -->
+<div class="toolbar" id="toolbar">
+  <button onclick="moveUp()">↑</button>
+  <button onclick="moveDown()">↓</button>
+  <button onclick="duplicate()">Duplicate</button>
+  <button onclick="removeSection()">Delete</button>
 </div>
 
 <script>
-const site = document.getElementById('site');
-let dragged;
+const site=document.getElementById('site');
+const toolbar=document.getElementById('toolbar');
+let selected=null;
 
-/* Utilities */
+/* Sidebar */
+function toggleSidebar(){
+  document.querySelector('.sidebar').classList.toggle('open');
+}
+
+/* Core */
 function makeSection(html){
-  const div = document.createElement('div');
-  div.className = 'section';
-  div.draggable = true;
-  div.innerHTML = `
-    <div class="section-controls">
-      <button onclick="this.closest('.section').remove()">✕</button>
-    </div>
-    ${html}
-  `;
-  addDrag(div);
+  const div=document.createElement('div');
+  div.className='section';
+  div.innerHTML=html;
+  div.onclick=e=>{e.stopPropagation();select(div)};
   site.appendChild(div);
 }
 
-/* Sections */
+function select(el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('selected'));
+  selected=el;
+  el.classList.add('selected');
+  toolbar.style.display='flex';
+}
+
+/* Blocks */
 function addHero(){
-  makeSection(`
-    <div class="hero">
-      <h1 contenteditable="true">Your Website Title</h1>
-      <p contenteditable="true">Describe your business here</p>
-    </div>
-  `);
+  makeSection(`<div class="hero">
+    <h1 contenteditable>Your Business Title</h1>
+    <p contenteditable>Your business description</p>
+  </div>`);
 }
 
 function addText(){
-  makeSection(`
-    <div class="text-section">
-      <p contenteditable="true">
-        Click to edit this text and explain your service.
-      </p>
-    </div>
-  `);
+  makeSection(`<div class="text">
+    <p contenteditable>Edit your text here</p>
+  </div>`);
 }
 
-function addImage(){
-  document.getElementById('imageUpload').click();
+function addColumns(){
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Feature One</div>
+    <div contenteditable style="background:#f3f4f6;padding:20px;border-radius:12px">Feature Two</div>
+  </div>`);
 }
+
+function addButton(){
+  makeSection(`<div style="text-align:center">
+    <a contenteditable style="display:inline-block;padding:14px 28px;background:#3b82f6;color:#fff;border-radius:14px;font-weight:800;text-decoration:none">
+      Call to Action
+    </a>
+  </div>`);
+}
+
+function addDivider(){makeSection(`<hr>`)}
+function addSpacer(){makeSection(`<div style="height:80px"></div>`)}
+function addImage(){imageUpload.click()}
 
 function handleImage(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    makeSection(`
-      <div class="image-section">
-        <img src="${reader.result}">
-      </div>
-    `);
-  };
-  reader.readAsDataURL(file);
+  const r=new FileReader();
+  r.onload=()=>makeSection(`<img src="${r.result}" style="max-width:100%">`);
+  r.readAsDataURL(e.target.files[0]);
 }
 
-/* Drag & drop */
-function addDrag(el){
-  el.addEventListener('dragstart', () => dragged = el);
-  el.addEventListener('dragover', e => e.preventDefault());
-  el.addEventListener('drop', () => {
-    site.insertBefore(dragged, el);
-  });
+/* FULL SITE GENERATOR */
+function generateFullSite(){
+  site.innerHTML="";
+
+  const palettes=[
+    {p:"#3b82f6",a:"#22d3ee"},
+    {p:"#9333ea",a:"#f472b6"},
+    {p:"#16a34a",a:"#86efac"}
+  ];
+  const c=palettes[Math.floor(Math.random()*palettes.length)];
+
+  makeSection(`<div class="hero" style="background:${c.p}">
+    <h1 contenteditable>Grow Your Business Smarter</h1>
+    <p contenteditable>Everything you need to launch and scale online.</p>
+    <a contenteditable style="display:inline-block;margin-top:20px;padding:14px 32px;background:${c.a};color:#000;border-radius:14px;font-weight:800;text-decoration:none">
+      Get Started
+    </a>
+  </div>`);
+
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Fast Setup</h3>
+      <p>Launch your website in minutes.</p>
+    </div>
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Mobile Ready</h3>
+      <p>Looks great on all devices.</p>
+    </div>
+  </div>`);
+
+  makeSection(`<div class="columns">
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Custom Design</h3>
+      <p>Edit everything visually.</p>
+    </div>
+    <div contenteditable style="background:#f3f4f6;padding:30px;border-radius:16px">
+      <h3>Export Ready</h3>
+      <p>Download clean HTML.</p>
+    </div>
+  </div>`);
+
+  makeSection(`<div style="text-align:center">
+    <h2 contenteditable>Ready to get started?</h2>
+    <a contenteditable style="display:inline-block;margin-top:20px;padding:16px 36px;background:${c.p};color:#fff;border-radius:16px;font-weight:800;text-decoration:none">
+      Contact Us
+    </a>
+  </div>`);
+
+  makeSection(`<div class="footer">
+    <p contenteditable>© BusinessPal ${new Date().getFullYear()}</p>
+  </div>`);
 }
 
-/* Background */
-function changeBackground(color){
-  site.style.background = color;
+/* Controls */
+function setPadding(v){if(selected)selected.style.padding=v+'px'}
+function setAlign(v){if(selected)selected.style.textAlign=v}
+function setWidth(v){if(selected){selected.style.maxWidth=v;selected.style.margin='auto'}}
+function setBg(c){if(selected)selected.style.background=c}
+
+/* Reorder */
+function moveUp(){
+  if(selected&&selected.previousElementSibling)
+    site.insertBefore(selected,selected.previousElementSibling);
+}
+function moveDown(){
+  if(selected&&selected.nextElementSibling)
+    site.insertBefore(selected.nextElementSibling,selected);
+}
+function duplicate(){
+  if(!selected)return;
+  const clone=selected.cloneNode(true);
+  clone.onclick=e=>{e.stopPropagation();select(clone)};
+  site.insertBefore(clone,selected.nextElementSibling);
+}
+function removeSection(){
+  if(selected){selected.remove();toolbar.style.display='none'}
 }
 
-/* Save */
-function saveSite(){
-  localStorage.setItem('savedSite', site.innerHTML);
-  alert('Website saved locally. You can return later.');
-}
-
-/* Load */
-window.onload = () => {
-  const saved = localStorage.getItem('savedSite');
-  if(saved){
-    site.innerHTML = saved;
-    document.querySelectorAll('.section').forEach(addDrag);
-  }
-};
-
-/* Export */
-function exportHTML(){
-  const html = `
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Your Website</title>
-<style>
-body{font-family:Arial;margin:0}
-.section{padding:60px 30px}
-.hero{background:#3b82f6;color:#fff;text-align:center}
-img{max-width:100%}
-</style>
-</head>
-<body>
-${site.innerHTML}
-</body>
-</html>
-`;
-  const blob = new Blob([html],{type:"text/html"});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'my-website.html';
-  a.click();
-}
+/* Deselect */
+document.body.onclick=()=>toolbar.style.display='none';
 </script>
 
 </body>
 </html>
+
+
+
+
 
 

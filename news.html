@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>News & Updates | BusinessPal</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Arial;
+  background:#0a0a0a;
+  color:#fff;
+}
+
+/* Header */
+header{
+  background:#000;
+  border-bottom:1px solid #222;
+  padding:30px 20px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:2.2rem;
+}
+
+header p{
+  color:#9ca3af;
+  margin-top:8px;
+}
+
+/* Layout */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.controls input,
+.controls select{
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid #1f2933;
+  background:#111827;
+  color:#fff;
+  font-weight:600;
+}
+
+/* Update cards */
+.update{
+  background:#111827;
+  border:1px solid #1f2933;
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:22px;
+}
+
+.update.highlight{
+  border-color:#3b82f6;
+  box-shadow:0 0 0 1px #3b82f6 inset;
+}
+
+.update h2{
+  margin:0 0 10px;
+  font-size:1.35rem;
+}
+
+.meta{
+  font-size:.85rem;
+  color:#9ca3af;
+  margin-bottom:14px;
+}
+
+/* Badges */
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:.75rem;
+  font-weight:800;
+  margin-right:6px;
+}
+
+.new{background:#3b82f6}
+.patch{background:#22c55e}
+.breaking{background:#ef4444}
+.planned{background:#f59e0b}
+
+/* Footer */
+.footer{
+  text-align:center;
+  color:#6b7280;
+  padding:40px 20px;
+}
+
+/* Back button */
+.back{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 18px;
+  border-radius:12px;
+  border:2px solid #3b82f6;
+  color:#3b82f6;
+  text-decoration:none;
+  font-weight:700;
+}
+.back:hover{
+  background:#3b82f6;
+  color:#fff;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  header h1{font-size:1.7rem}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>News & Updates</h1>
+  <p>What’s new, fixed, and coming next for BusinessPal</p>
+  <a class="back" href="index.html">← Back to Home</a>
+</header>
+
+<main class="container">
+
+  <!-- Controls -->
+  <div class="controls">
+    <input id="search" placeholder="Search updates…">
+    <select id="filter">
+      <option value="">All updates</option>
+      <option value="NEW">New features</option>
+      <option value="PATCH">Patches</option>
+      <option value="PLANNED">Planned</option>
+    </select>
+  </div>
+
+  <!-- 🔥 FEATURED UPDATE -->
+  <article class="update highlight" data-type="NEW">
+  <h2>
+    <span class="badge new">NEW</span>
+    Business Tools Update
+  </h2>
+
+  <div class="meta">
+    Version 1.2.3 ·
+    <time datetime="2026-01-30T17:20">19 January 2026 · 16:29</time>
+  </div>
+
+  <ul>
+    <li>Launch of the new Business Idea Generator with budget, skill, and mode selection</li>
+    <li>Automatic generation of monetisation plans and revenue strategies</li>
+    <li>Built-in target audience insights for each generated business idea</li>
+    <li>Advanced feasibility indicators including risk level, difficulty, and time to profit</li>
+    <li>Improved idea variation logic to generate more diverse and realistic results</li>
+    <li>Consistent BusinessPal design system applied across all tools</li>
+    <li>Fully responsive layouts optimised for desktop, tablet, and mobile devices</li>
+    <li>Improved navigation between tools with clear back-to-home links</li>
+    <li>Performance and stability improvements across interactive tools</li>
+    <li>Ongoing expansion of BusinessPal’s tool suite as part of active development</li>
+  </ul>
+</article>
+
+
+  <article class="update highlight" data-type="NEW">
+  <h2>
+    <span class="badge new">NEW</span>
+    Website Builder Update
+  </h2>
+
+  <div class="meta">
+    Version 1.2.2 ·
+    <time datetime="2026-01-26T18:10">19 January 2026 · 16:10</time>
+  </div>
+
+  <ul>
+    <li>One-click full website generation with structured layouts</li>
+    <li>Improved mobile responsiveness across the builder interface</li>
+    <li>Touch-friendly controls for section selection and reordering</li>
+    <li>Enhanced section settings for padding, alignment, width, and backgrounds</li>
+    <li>New visual content blocks for feature sections and call-to-action areas</li>
+    <li>Improved sidebar experience with mobile slide-out navigation</li>
+    <li>Refined floating toolbar for faster editing on smaller screens</li>
+    <li>Cleaner generated layouts for better export quality</li>
+    <li>Stability and performance improvements during editing sessions</li>
+    <li>Ongoing visual and usability refinements as part of active development</li>
+  </ul>
+</article>
+
+  <article class="update highlight" data-type="NEW">
+    <h2>
+      <span class="badge new">NEW</span>
+      Website Builder Update
+    </h2>
+    <div class="meta">
+      Version 1.2.1 ·
+      <time datetime="2026-01-19T14:30">19 January 2026 · 15:59</time>
+    </div>
+  <ul>
+  <li>New visual section builder with drag & reorder support</li>
+  <li>Inline text editing directly on the page</li>
+  <li>Responsive layout improvements for desktop and mobile</li>
+  <li>New content blocks: Hero, Cards, Columns, Buttons, Forms & Footer</li>
+  <li>Section controls for padding, alignment, width, and background colour</li>
+  <li>Improved section duplication and deletion tools</li>
+  <li>Cleaner UI with floating action toolbar</li>
+  <li>Performance and stability improvements across the builder</li>
+  <li>Ongoing enhancements to layout flexibility and usability</li>
+  <li>Early access features added as part of active development</li>
+</ul>
+
+
+  </article>
+  
+  <article class="update highlight" data-type="NEW">
+    <h2>
+      <span class="badge new">NEW</span>
+      Updates Panel 1.1.4
+    </h2>
+    <div class="meta">
+      Version 1.1.4 ·
+      <time datetime="2026-01-19T14:30">19 January 2026 · 15:33</time>
+    </div>
+    <ul>
+  <li>Stay up to date with the latest BusinessPal changes</li>
+  <li>View new features, patches, and improvements</li>
+  <li>Track updates with clear timestamps</li>
+  <li>See what’s coming next on our roadmap</li>
+</ul>
+
+  </article>
+  
+  <article class="update highlight" data-type="NEW">
+    <h2>
+      <span class="badge new">NEW</span>
+      Visual Website Builder v1.2
+    </h2>
+    <div class="meta">
+      Version 1.2 ·
+      <time datetime="2026-01-19T14:30">19 January 2026 · 14:30</time>
+    </div>
+    <ul>
+      <li>Mobile-friendly touch editing</li>
+      <li>Section duplication & reordering</li>
+      <li>Improved export quality</li>
+    </ul>
+  </article>
+
+  <!-- PATCH -->
+  <article class="update" data-type="PATCH">
+    <h2>
+      <span class="badge patch">PATCH</span>
+      Stability Improvements
+    </h2>
+    <div class="meta">
+      Version 1.1.4 ·
+      <time>15 January 2026 · 09:10</time>
+    </div>
+    <ul>
+      <li>Fixed image upload errors</li>
+      <li>Improved save reliability</li>
+      <li>Minor UI polish</li>
+    </ul>
+  </article>
+
+  <!-- PLANNED -->
+  <article class="update" data-type="PLANNED">
+    <h2>
+      <span class="badge planned">PLANNED</span>
+      Upcoming Features
+    </h2>
+    <div class="meta">
+      In development
+    </div>
+    <ul>
+      <li>Template library</li>
+      <li>User accounts & cloud saving</li>
+      <li>Custom domains</li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  © BusinessPal · Building smarter websites
+</footer>
+
+<script>
+/* Search & filter */
+const search = document.getElementById('search');
+const filter = document.getElementById('filter');
+const updates = document.querySelectorAll('.update');
+
+function applyFilters(){
+  const q = search.value.toLowerCase();
+  const f = filter.value;
+
+  updates.forEach(u=>{
+    const matchText = u.innerText.toLowerCase().includes(q);
+    const matchType = !f || u.dataset.type === f;
+    u.style.display = matchText && matchType ? 'block' : 'none';
+  });
+}
+
+search.addEventListener('input', applyFilters);
+filter.addEventListener('change', applyFilters);
+</script>
+
+</body>
+</html>
+
