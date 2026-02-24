@@ -256,6 +256,122 @@ footer{
   50%{transform:translateY(-20px) translateX(15px) rotate(15deg);}
   100%{transform:translateY(0) translateX(0) rotate(0deg);}
 }
+/* ======================
+   MOBILE RESPONSIVE
+====================== */
+
+/* Tablets */
+@media(max-width:1024px){
+  header{
+    padding:20px 30px;
+    flex-direction:column;
+    gap:15px;
+  }
+  .hero-services{
+    padding:80px 20px;
+  }
+  .hero-services h1{
+    font-size:clamp(3rem,8vw,5rem);
+  }
+  .hero-services p{
+    font-size:1.1rem;
+    max-width:90%;
+    margin:auto;
+  }
+  .services-grid{
+    gap:25px;
+  }
+  .service-card{
+    padding:35px 25px;
+  }
+  .testimonials-section{
+    padding:60px 20px;
+  }
+  .testimonial{
+    padding:25px 15px;
+  }
+  .cta-section{
+    padding:60px 20px;
+  }
+  .cta-section a{
+    padding:20px 50px;
+    font-size:1.1rem;
+  }
+}
+
+/* Small Tablets / Large Phones */
+@media(max-width:768px){
+  .services-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .hero-services h1{
+    font-size:clamp(2.5rem,7vw,4.5rem);
+  }
+  .hero-services p{
+    font-size:1rem;
+  }
+  .service-card h3{
+    font-size:1.5rem;
+  }
+  .service-card p{
+    font-size:1rem;
+  }
+  .testimonial p{
+    font-size:1rem;
+  }
+  .testimonial span{
+    font-size:1.05rem;
+  }
+  .cta-section a{
+    padding:18px 45px;
+    font-size:1.1rem;
+  }
+}
+
+/* Mobile Phones */
+@media(max-width:480px){
+  header{
+    padding:15px 20px;
+  }
+  .hero-services{
+    padding:60px 15px;
+  }
+  .hero-services h1{
+    font-size:clamp(2rem,6vw,3.5rem);
+  }
+  .hero-services p{
+    font-size:0.95rem;
+  }
+  .service-card{
+    padding:25px 15px;
+  }
+  .service-card h3{
+    font-size:1.3rem;
+  }
+  .service-card p{
+    font-size:0.95rem;
+  }
+  .testimonial{
+    padding:20px 15px;
+  }
+  .testimonial p{
+    font-size:0.95rem;
+  }
+  .testimonial span{
+    font-size:1rem;
+  }
+  .cta-section a{
+    padding:15px 35px;
+    font-size:1rem;
+  }
+  .floating-shape.shape1,
+  .floating-shape.shape2,
+  .floating-shape.shape3{
+    width:100px;
+    height:100px;
+  }
+}
 </style>
 </head>
 <body>
