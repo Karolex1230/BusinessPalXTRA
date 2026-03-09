@@ -32,6 +32,12 @@ margin:auto;
 padding:40px;
 }
 
+@media(max-width:768px){
+.container{
+padding:20px;
+}
+}
+
 /* TOP BAR */
 
 .topbar{
@@ -214,7 +220,84 @@ padding:8px 14px;
 border-radius:6px;
 font-size:14px;
 }
+@media (max-width:600px){
 
+.topbar{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.home-btn{
+width:100%;
+text-align:center;
+}
+
+@media(max-width:768px){
+
+.profile-card{
+padding:25px 20px;
+}
+
+.profile-card img{
+width:120px;
+}
+
+.profile-card h2{
+font-size:22px;
+}
+
+@media(max-width:768px){
+
+.card{
+padding:25px 20px;
+}
+
+h3{
+font-size:20px;
+}
+
+canvas{
+max-width:100%;
+height:auto;
+}
+
+@media(max-width:768px){
+
+.footer-container{
+padding:40px 20px;
+}
+
+.footer-bottom{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+
+.top-btn{
+width:100%;
+text-align:center;
+}
+
+@media(max-width:480px){
+
+body{
+font-size:15px;
+}
+
+h1{
+font-size:26px;
+}
+
+.profile-card p{
+font-size:14px;
+}
+
+.info{
+font-size:13px;
+}
+
+}
 </style>
 
 </head>
