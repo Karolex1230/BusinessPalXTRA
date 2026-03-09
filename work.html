@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Services | Business Pal</title>
+<title>Our Work | Business Pal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -67,8 +67,8 @@ color:white;
 }
 
 .hero h1{
-font-size:44px;
-margin-bottom:15px;
+font-size:42px;
+margin-bottom:10px;
 }
 
 .hero p{
@@ -77,66 +77,74 @@ margin:auto;
 opacity:0.9;
 }
 
-/* SERVICES */
+/* WORK SECTION */
 
-.services{
+.work{
 padding:70px 8%;
 max-width:1200px;
 margin:auto;
 }
 
-.services h2{
+.work h2{
 text-align:center;
 margin-bottom:50px;
 }
 
-.services-grid{
+/* GRID */
+
+.work-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-.service-card{
+/* PROJECT CARD */
+
+.project-card{
 background:white;
-padding:35px;
 border-radius:12px;
 box-shadow:0 10px 25px rgba(0,0,0,0.05);
+overflow:hidden;
 transition:0.3s;
 }
 
-.service-card:hover{
-transform:translateY(-5px);
+.project-card:hover{
+transform:translateY(-6px);
 }
 
-.service-card h3{
+.project-image{
+height:180px;
+background:#e5e7eb;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#6b7280;
+font-size:14px;
+}
+
+.project-content{
+padding:25px;
+}
+
+.project-content h3{
 margin-bottom:10px;
 }
 
-/* TESTIMONIALS */
-
-.testimonials{
-padding:70px 8%;
-text-align:center;
+.project-content p{
+font-size:14px;
+margin-bottom:15px;
 }
 
-.test-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.test{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+.project-content a{
+text-decoration:none;
+color:#2563eb;
+font-weight:500;
 }
 
 /* CTA */
 
 .cta-section{
-padding:90px 8%;
+padding:80px 8%;
 text-align:center;
 background:#2563eb;
 color:white;
@@ -234,11 +242,7 @@ padding:70px 6%;
 font-size:32px;
 }
 
-.services{
-padding:60px 6%;
-}
-
-.testimonials{
+.work{
 padding:60px 6%;
 }
 
@@ -267,6 +271,7 @@ text-align:center;
 <nav>
 <a href="index.html">Home</a>
 <a href="services.html">Services</a>
+<a href="work.html">Work</a>
 <a href="careers.html">Careers</a>
 <a href="contact.html" class="home-btn">Contact</a>
 </nav>
@@ -276,80 +281,90 @@ text-align:center;
 
 <section class="hero">
 
-<h1>Our Services</h1>
+<h1>Our Work</h1>
 
 <p>
-We help businesses grow online with modern websites,
-branding, and digital solutions designed to attract
-customers and build strong online presence.
+Take a look at some of the projects we have built for businesses
+to help them grow their online presence.
 </p>
 
 </section>
 
 
-<section class="services">
+<section class="work">
 
-<h2>What We Offer</h2>
+<h2>Recent Projects</h2>
 
-<div class="services-grid">
+<div class="work-grid">
 
-<div class="service-card">
-<h3>Custom Websites</h3>
+<!-- PROJECT 1 -->
+
+<div class="project-card">
+
+<div class="project-image">
+Website Screenshot
+</div>
+
+<div class="project-content">
+
+<h3>Precision Valet</h3>
+
 <p>
-Fast, modern websites designed for performance and user experience.
-Built to help businesses attract and convert customers.
+Modern business website built to showcase services and attract new customers.
 </p>
+
+<a href="#">View Project →</a>
+
 </div>
 
-<div class="service-card">
-<h3>WordPress Development</h3>
+</div>
+
+
+<!-- PROJECT 2 -->
+
+<div class="project-card">
+
+<div class="project-image">
+Website Screenshot
+</div>
+
+<div class="project-content">
+
+<h3>ST Auto Styling</h3>
+
 <p>
-Professional WordPress setups that are easy to manage while maintaining
-strong performance and security.
+Professional website highlighting car detailing services and portfolio work.
 </p>
+
+<a href="#">View Project →</a>
+
 </div>
 
-<div class="service-card">
-<h3>Branding</h3>
+</div>
+
+
+<!-- PROJECT 3 -->
+
+<div class="project-card">
+
+<div class="project-image">
+Website Screenshot
+</div>
+
+<div class="project-content">
+
+<h3>ChrisWoo Music Events</h3>
+
 <p>
-Logo design, colour palettes, and visual identity to help your
-business stand out and build trust.
+Event-focused website designed to promote music events and bookings.
 </p>
-</div>
 
-<div class="service-card">
-<h3>Website Maintenance</h3>
-<p>
-Keep your website secure, updated, and running smoothly
-with ongoing support and maintenance.
-</p>
+<a href="#">View Project →</a>
+
 </div>
 
 </div>
 
-</section>
-
-
-<section class="testimonials">
-
-<h2>What Clients Say</h2>
-
-<div class="test-grid">
-
-<div class="test">
-<p>"Professional work and a huge improvement to our website."</p>
-<strong>Precision Valet</strong>
-</div>
-
-<div class="test">
-<p>"Fast delivery and exactly what we needed."</p>
-<strong>ST Auto Styling</strong>
-</div>
-
-<div class="test">
-<p>"Clean design and great communication throughout."</p>
-<strong>ChrisWoo Music Events</strong>
-</div>
 
 </div>
 
@@ -358,7 +373,7 @@ with ongoing support and maintenance.
 
 <section class="cta-section">
 
-<h2>Ready to Grow Your Business Online?</h2>
+<h2>Want a Website Like These?</h2>
 
 <br>
 
@@ -382,7 +397,7 @@ with ongoing support and maintenance.
 <h4>Navigation</h4>
 <a href="index.html">Home</a>
 <a href="services.html">Services</a>
-<a href="careers.html">Careers</a>
+<a href="work.html">Work</a>
 <a href="contact.html">Contact</a>
 </div>
 

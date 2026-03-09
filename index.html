@@ -165,13 +165,41 @@ gap:30px;
 }
 
 .project{
-background:#f1f5f9;
-height:200px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:600;
+position:relative;
+border-radius:12px;
+overflow:hidden;
+height:220px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.3s;
+}
+
+.project img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.project:hover{
+transform:translateY(-6px);
+}
+
+/* Overlay */
+
+.project-info{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+background:linear-gradient(transparent, rgba(0,0,0,0.7));
+padding:20px;
+color:white;
+}
+
+.project-info h3{
+margin:0;
+font-size:18px;
 }
 
 /* TESTIMONIALS */
@@ -490,11 +518,35 @@ into customers.
 
 <div class="port-grid">
 
-<div class="project">Project One</div>
+<div class="project">
 
-<div class="project">Project Two</div>
+<img src="project1.jpg" alt="Project One">
 
-<div class="project">Project Three</div>
+<div class="project-info">
+<h3>Project One</h3>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="project2.jpg" alt="Project Two">
+
+<div class="project-info">
+<h3>Project Two</h3>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="project3.jpg" alt="Project Three">
+
+<div class="project-info">
+<h3>Project Three</h3>
+</div>
+
+</div>
 
 </div>
 
