@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST Auto Styling | Project Case Study</title>
+
+<style>
+
+/* GENERAL */
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+line-height:1.6;
+color:#333;
+background:#f8fafc;
+}
+
+/* HERO */
+
+.project-hero{
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+color:white;
+padding:100px 20px 80px 20px;
+text-align:center;
+}
+
+.project-hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.project-hero p{
+font-size:20px;
+opacity:0.9;
+max-width:600px;
+margin:auto;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+text-align:center;
+margin-top:-25px;
+}
+
+.back-btn a{
+display:inline-block;
+background:white;
+color:#2563eb;
+padding:10px 18px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.back-btn a:hover{
+transform:translateY(-2px);
+}
+
+/* CONTENT */
+
+.project-container{
+padding:60px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+margin-bottom:60px;
+}
+
+.project-grid img{
+width:100%;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.project-text h2{
+margin-top:0;
+font-size:32px;
+}
+
+.project-text p{
+margin-bottom:18px;
+font-size:16px;
+}
+
+/* GALLERY */
+
+.gallery-title{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:8px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.project-grid{
+grid-template-columns:1fr;
+}
+
+.project-hero h1{
+font-size:36px;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.project-hero{
+padding:80px 20px;
+}
+
+.project-hero h1{
+font-size:28px;
+}
+
+.project-hero p{
+font-size:16px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="project-hero">
+
+<h1>ST Auto Styling</h1>
+
+<p>Helping transform a startup into a growing automotive brand</p>
+
+</section>
+
+<div class="back-btn">
+<a href="index.html">← Back to Home</a>
+</div>
+
+<!-- PROJECT STORY -->
+
+<section class="project-container">
+
+<div class="project-grid">
+
+<img src="project1.jpg" alt="ST Auto Styling">
+
+<div class="project-text">
+
+<h2>The Beginning</h2>
+
+<p>
+ST Auto Styling was founded by Seweryn Treder with a vision to provide
+high-quality vehicle styling and customisation services. When Seweryn
+first approached us, the business was in its early startup stage and
+needed a professional online presence to support its growth.
+</p>
+
+<p>
+Our goal was to design and build a modern website that showcased the
+quality of Seweryn’s work while allowing potential customers to easily
+explore services, view previous projects, and get in touch.
+</p>
+
+</div>
+
+</div>
+
+<div class="project-grid">
+
+<div class="project-text">
+
+<h2>Growth & Success</h2>
+
+<p>
+Since launching the website, ST Auto Styling has continued to grow
+within the automotive styling industry. The business has developed a
+strong reputation for quality workmanship, attention to detail, and
+excellent customer service.
+</p>
+
+<p>
+What began as a small startup has evolved into a growing and expanding
+business, attracting new customers and continually developing its
+services.
+</p>
+
+<p>
+Today, ST Auto Styling continues to build its brand and reputation,
+delivering high-quality vehicle styling solutions while expanding its
+customer base and industry presence.
+</p>
+
+</div>
+
+<img src="stauto2.jpg" alt="ST Auto Styling Work">
+
+</div>
+
+<h2 class="gallery-title">Project Gallery</h2>
+
+<div class="gallery">
+
+<img src="stauto3.jpg" alt="Project image">
+<img src="stauto4.jpg" alt="Project image">
+<img src="stauto5.jpg" alt="Project image">
+<img src="stauto6.jpg" alt="Project image">
+
+</div>
+
+</section>
+
+</body>
+</html>

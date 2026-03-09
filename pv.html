@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Valet | Project Case Study</title>
+
+<style>
+
+/* GENERAL */
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+line-height:1.6;
+color:#333;
+background:#f8fafc;
+}
+
+/* HERO */
+
+.project-hero{
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+color:white;
+padding:100px 20px 80px 20px;
+text-align:center;
+}
+
+.project-hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.project-hero p{
+font-size:20px;
+opacity:0.9;
+max-width:600px;
+margin:auto;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+text-align:center;
+margin-top:-25px;
+}
+
+.back-btn a{
+display:inline-block;
+background:white;
+color:#2563eb;
+padding:10px 18px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.back-btn a:hover{
+transform:translateY(-2px);
+}
+
+/* CONTENT */
+
+.project-container{
+padding:60px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+margin-bottom:60px;
+}
+
+.project-grid img{
+width:100%;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.project-text h2{
+margin-top:0;
+font-size:32px;
+}
+
+.project-text p{
+margin-bottom:18px;
+font-size:16px;
+}
+
+/* GALLERY */
+
+.gallery-title{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:8px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.project-grid{
+grid-template-columns:1fr;
+}
+
+.project-hero h1{
+font-size:36px;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.project-hero{
+padding:80px 20px;
+}
+
+.project-hero h1{
+font-size:28px;
+}
+
+.project-hero p{
+font-size:16px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="project-hero">
+
+<h1>Precision Valet</h1>
+
+<p>Supporting the growth of a premium car detailing startup</p>
+
+</section>
+
+<div class="back-btn">
+<a href="index.html">← Back to Home</a>
+</div>
+
+<!-- PROJECT STORY -->
+
+<section class="project-container">
+
+<div class="project-grid">
+
+<img src="project2.jpg" alt="Precision Valet">
+
+<div class="project-text">
+
+<h2>The Beginning</h2>
+
+<p>
+Precision Valet is a growing vehicle detailing and valeting business
+founded by Tiernan Connor Steele. As a startup entering a competitive
+market, the goal was to establish a strong and professional online
+presence that reflected the quality of the services offered.
+</p>
+
+<p>
+When Tiernan first approached us, the business was in its early stages
+and required a modern website that could showcase his work, highlight
+his services, and help attract new customers.
+</p>
+
+</div>
+
+</div>
+
+<div class="project-grid">
+
+<div class="project-text">
+
+<h2>Building a Strong Reputation</h2>
+
+<p>
+Since launching the website, Precision Valet has continued to grow
+within the car detailing and valeting market. Tiernan has developed
+a reputation for professionalism and high attention to detail,
+delivering exceptional results for every vehicle he works on.
+</p>
+
+<p>
+His portfolio now includes a wide range of vehicles, including
+high-value and luxury cars that require specialist care and
+precision detailing.
+</p>
+
+<p>
+As the business continues to grow, Precision Valet is building a
+strong brand and an expanding client base, establishing itself as a
+trusted provider of premium car cleaning and detailing services.
+</p>
+
+</div>
+
+<img src="precision2.jpg" alt="Precision Valet Work">
+
+</div>
+
+<h2 class="gallery-title">Project Gallery</h2>
+
+<div class="gallery">
+
+<img src="precision3.jpg" alt="Precision Valet">
+<img src="precision4.jpg" alt="Precision Valet">
+<img src="precision5.jpg" alt="Precision Valet">
+<img src="precision6.jpg" alt="Precision Valet">
+
+</div>
+
+</section>
+
+</body>
+</html>
