@@ -9,6 +9,7 @@
 
 <style>
 
+```css
 /* GLOBAL */
 
 *{
@@ -26,27 +27,29 @@ overflow-x:hidden;
 position:relative;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND EFFECTS */
 
 body::before{
 content:"";
 position:fixed;
-top:-200px;
-right:-200px;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#3b82f620,transparent 70%);
+top:-250px;
+right:-250px;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#3b82f650,transparent 60%);
+filter:blur(120px);
 z-index:-1;
 }
 
 body::after{
 content:"";
 position:fixed;
-bottom:-200px;
-left:-200px;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#2563eb20,transparent 70%);
+bottom:-250px;
+left:-250px;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#2563eb40,transparent 60%);
+filter:blur(120px);
 z-index:-1;
 }
 
@@ -56,12 +59,15 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px 8%;
-background:white;
+padding:20px 8%;
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+
+border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
 .logo{
@@ -79,53 +85,75 @@ margin-left:28px;
 text-decoration:none;
 color:#333;
 font-weight:500;
-transition:0.2s;
+transition:0.25s;
 }
 
 nav a:hover{
 color:#2563eb;
 }
 
+/* BUTTONS */
+
 .cta{
-background:#2563eb;
+background:linear-gradient(135deg,#2563eb,#3b82f6);
 color:white;
-padding:12px 24px;
-border-radius:6px;
+padding:13px 26px;
+border-radius:8px;
 text-decoration:none;
 margin-left:25px;
-font-weight:500;
-transition:0.25s;
+font-weight:600;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(37,99,235,0.35);
 }
 
 .cta:hover{
-background:#1d4ed8;
-box-shadow:0 8px 20px rgba(37,99,235,0.35);
+transform:translateY(-2px);
+box-shadow:0 12px 30px rgba(37,99,235,0.45);
+}
+
+.secondary-btn{
+border:1px solid #ddd;
+padding:13px 26px;
+border-radius:8px;
+text-decoration:none;
+color:#333;
+transition:0.25s;
+background:white;
+}
+
+.secondary-btn:hover{
+border-color:#2563eb;
+color:#2563eb;
+box-shadow:0 10px 25px rgba(37,99,235,0.1);
 }
 
 /* HERO */
 
 .hero{
-padding:140px 8%;
-min-height:90vh;
+padding:150px 8%;
+min-height:95vh;
 display:flex;
 align-items:center;
 justify-content:center;
-flex-wrap:wrap;
 text-align:center;
 
 background:
-radial-gradient(circle at 20% 30%, #2563eb15, transparent 40%),
-radial-gradient(circle at 80% 70%, #3b82f615, transparent 40%),
-linear-gradient(180deg,#ffffff,#f8fafc);
+radial-gradient(circle at 20% 30%, #2563eb20, transparent 40%),
+radial-gradient(circle at 80% 70%, #3b82f620, transparent 40%),
+linear-gradient(180deg,#ffffff,#f1f5ff);
 }
 
 .hero-text{
-max-width:650px;
+max-width:700px;
 }
 
 .hero h1{
-font-size:60px;
+font-size:64px;
 margin-bottom:22px;
+
+background:linear-gradient(90deg,#111,#2563eb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
@@ -134,25 +162,13 @@ color:#555;
 margin-bottom:35px;
 }
 
+/* BUTTON WRAPPER */
+
 .hero-buttons{
 display:flex;
 justify-content:center;
-gap:15px;
+gap:16px;
 flex-wrap:wrap;
-}
-
-.secondary-btn{
-border:1px solid #ddd;
-padding:12px 24px;
-border-radius:6px;
-text-decoration:none;
-color:#333;
-transition:0.25s;
-}
-
-.secondary-btn:hover{
-border-color:#2563eb;
-color:#2563eb;
 }
 
 /* TRUST */
@@ -160,14 +176,10 @@ color:#2563eb;
 .trust{
 padding:70px 8%;
 text-align:center;
-background:linear-gradient(180deg,#ffffff,#f8fbff);
+
+background:white;
 border-top:1px solid #eef2ff;
 border-bottom:1px solid #eef2ff;
-}
-
-.trust p{
-margin-bottom:25px;
-color:#666;
 }
 
 .logos{
@@ -176,18 +188,18 @@ justify-content:center;
 gap:60px;
 flex-wrap:wrap;
 opacity:0.7;
-font-weight:500;
+font-weight:600;
 }
 
 /* SERVICES */
 
 .services{
-padding:110px 8%;
+padding:120px 8%;
 text-align:center;
 }
 
 .services h2{
-font-size:38px;
+font-size:40px;
 margin-bottom:60px;
 }
 
@@ -199,30 +211,30 @@ gap:30px;
 
 .card{
 background:white;
-padding:40px;
-border-radius:12px;
+padding:45px;
+border-radius:14px;
 border:1px solid #eef2ff;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.06);
+transition:0.35s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 40px rgba(37,99,235,0.15);
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(37,99,235,0.18);
 border-color:#c7d2fe;
 }
 
 /* PORTFOLIO */
 
 .portfolio{
-padding:110px 8%;
-background:#fff;
+padding:120px 8%;
+background:linear-gradient(180deg,#ffffff,#f8fbff);
 }
 
 .portfolio h2{
 text-align:center;
 margin-bottom:60px;
-font-size:36px;
+font-size:38px;
 }
 
 .port-grid{
@@ -233,18 +245,18 @@ gap:30px;
 
 .project{
 position:relative;
-border-radius:12px;
+border-radius:14px;
 overflow:hidden;
-height:220px;
+height:230px;
 cursor:pointer;
-transition:0.3s;
+transition:0.35s;
 border:1px solid #e5e7eb;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
 }
 
 .project:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 35px rgba(37,99,235,0.25);
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 25px 60px rgba(37,99,235,0.25);
 }
 
 .project img{
@@ -266,12 +278,12 @@ color:white;
 /* TESTIMONIALS */
 
 .testimonials{
-padding:110px 8%;
+padding:120px 8%;
 text-align:center;
 }
 
 .testimonials h2{
-font-size:36px;
+font-size:38px;
 }
 
 .test-grid{
@@ -283,23 +295,23 @@ margin-top:45px;
 
 .test{
 background:white;
-padding:35px;
-border-radius:10px;
+padding:38px;
+border-radius:12px;
 border:1px solid #eef2ff;
 box-shadow:0 10px 25px rgba(0,0,0,0.05);
 transition:0.3s;
 }
 
 .test:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 30px rgba(37,99,235,0.15);
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(37,99,235,0.15);
 }
 
-/* CTA */
+/* CTA SECTION */
 
 .cta-section{
-padding:120px 8%;
-background:#2563eb;
+padding:130px 8%;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
 color:white;
 text-align:center;
 }
@@ -312,8 +324,8 @@ margin-bottom:20px;
 .cta-section a{
 background:white;
 color:#2563eb;
-padding:14px 30px;
-border-radius:6px;
+padding:15px 32px;
+border-radius:8px;
 text-decoration:none;
 font-weight:600;
 display:inline-block;
@@ -373,7 +385,7 @@ padding:110px 6%;
 }
 
 .hero h1{
-font-size:42px;
+font-size:44px;
 }
 
 }
@@ -423,6 +435,20 @@ font-size:34px;
 font-size:16px;
 }
 
+/* FIX BUTTON SIZE */
+
+.hero-buttons{
+flex-direction:column;
+align-items:center;
+width:100%;
+}
+
+.hero-buttons a{
+width:100%;
+max-width:280px;
+text-align:center;
+}
+
 .services,
 .portfolio,
 .testimonials{
@@ -443,6 +469,8 @@ gap:25px;
 }
 
 }
+```
+
 
 </style>
 </head>
