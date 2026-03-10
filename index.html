@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Business Pal | Digital Solutions</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* GLOBAL */
 
 *{
 margin:0;
@@ -21,11 +22,11 @@ body{
 background:#f8fafc;
 color:#111;
 line-height:1.6;
-position:relative;
 overflow-x:hidden;
+position:relative;
 }
 
-/* subtle background glow */
+/* BACKGROUND GLOW */
 
 body::before{
 content:"";
@@ -55,7 +56,7 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 8%;
+padding:22px 8%;
 background:white;
 position:sticky;
 top:0;
@@ -68,11 +69,21 @@ font-size:22px;
 font-weight:700;
 }
 
+nav{
+display:flex;
+align-items:center;
+}
+
 nav a{
-margin-left:30px;
+margin-left:28px;
 text-decoration:none;
 color:#333;
 font-weight:500;
+transition:0.2s;
+}
+
+nav a:hover{
+color:#2563eb;
 }
 
 .cta{
@@ -81,20 +92,27 @@ color:white;
 padding:12px 24px;
 border-radius:6px;
 text-decoration:none;
-margin-left:20px;
+margin-left:25px;
+font-weight:500;
+transition:0.25s;
+}
+
+.cta:hover{
+background:#1d4ed8;
+box-shadow:0 8px 20px rgba(37,99,235,0.35);
 }
 
 /* HERO */
 
 .hero{
-padding:130px 8%;
-min-height:100vh;
+padding:140px 8%;
+min-height:90vh;
 display:flex;
 align-items:center;
-justify-content:space-between;
+justify-content:center;
 flex-wrap:wrap;
-}
-.hero{
+text-align:center;
+
 background:
 radial-gradient(circle at 20% 30%, #2563eb15, transparent 40%),
 radial-gradient(circle at 80% 70%, #3b82f615, transparent 40%),
@@ -102,22 +120,25 @@ linear-gradient(180deg,#ffffff,#f8fafc);
 }
 
 .hero-text{
-max-width:540px;
+max-width:650px;
 }
 
 .hero h1{
-font-size:56px;
-margin-bottom:20px;
+font-size:60px;
+margin-bottom:22px;
 }
 
 .hero p{
 font-size:18px;
 color:#555;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
-.hero-buttons a{
-margin-right:15px;
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .secondary-btn{
@@ -126,6 +147,12 @@ padding:12px 24px;
 border-radius:6px;
 text-decoration:none;
 color:#333;
+transition:0.25s;
+}
+
+.secondary-btn:hover{
+border-color:#2563eb;
+color:#2563eb;
 }
 
 /* TRUST */
@@ -133,13 +160,13 @@ color:#333;
 .trust{
 padding:70px 8%;
 text-align:center;
-background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+background:linear-gradient(180deg,#ffffff,#f8fbff);
 border-top:1px solid #eef2ff;
 border-bottom:1px solid #eef2ff;
 }
 
 .trust p{
-margin-bottom:30px;
+margin-bottom:25px;
 color:#666;
 }
 
@@ -149,23 +176,24 @@ justify-content:center;
 gap:60px;
 flex-wrap:wrap;
 opacity:0.7;
+font-weight:500;
 }
 
 /* SERVICES */
 
 .services{
-padding:100px 8%;
+padding:110px 8%;
 text-align:center;
 }
 
 .services h2{
-font-size:36px;
+font-size:38px;
 margin-bottom:60px;
 }
 
 .service-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 }
 
@@ -173,10 +201,9 @@ gap:30px;
 background:white;
 padding:40px;
 border-radius:12px;
+border:1px solid #eef2ff;
 box-shadow:0 10px 30px rgba(0,0,0,0.05);
 transition:0.3s;
-border:1px solid #eef2ff;
-position:relative;
 }
 
 .card:hover{
@@ -188,13 +215,14 @@ border-color:#c7d2fe;
 /* PORTFOLIO */
 
 .portfolio{
-padding:100px 8%;
+padding:110px 8%;
 background:#fff;
 }
 
 .portfolio h2{
 text-align:center;
 margin-bottom:60px;
+font-size:36px;
 }
 
 .port-grid{
@@ -208,10 +236,10 @@ position:relative;
 border-radius:12px;
 overflow:hidden;
 height:220px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
 cursor:pointer;
 transition:0.3s;
 border:1px solid #e5e7eb;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 .project:hover{
@@ -223,14 +251,7 @@ box-shadow:0 15px 35px rgba(37,99,235,0.25);
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
 }
-
-.project:hover{
-transform:translateY(-6px);
-}
-
-/* Overlay */
 
 .project-info{
 position:absolute;
@@ -242,31 +263,30 @@ padding:20px;
 color:white;
 }
 
-.project-info h3{
-margin:0;
-font-size:18px;
-}
-
 /* TESTIMONIALS */
 
 .testimonials{
-padding:100px 8%;
+padding:110px 8%;
 text-align:center;
+}
+
+.testimonials h2{
+font-size:36px;
 }
 
 .test-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
-margin-top:40px;
+margin-top:45px;
 }
 
 .test{
 background:white;
 padding:35px;
 border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
 border:1px solid #eef2ff;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 transition:0.3s;
 }
 
@@ -285,7 +305,7 @@ text-align:center;
 }
 
 .cta-section h2{
-font-size:40px;
+font-size:42px;
 margin-bottom:20px;
 }
 
@@ -296,6 +316,8 @@ padding:14px 30px;
 border-radius:6px;
 text-decoration:none;
 font-weight:600;
+display:inline-block;
+margin-top:15px;
 }
 
 /* FOOTER */
@@ -303,7 +325,7 @@ font-weight:600;
 footer{
 background:#0f172a;
 color:#aaa;
-padding:60px 8%;
+padding:70px 8%;
 }
 
 .footer-grid{
@@ -324,11 +346,16 @@ text-decoration:none;
 margin-bottom:8px;
 }
 
+footer a:hover{
+color:white;
+}
+
 .bottom{
 margin-top:40px;
 text-align:center;
 font-size:14px;
 }
+
 /* MOBILE MENU */
 
 .menu-toggle{
@@ -339,34 +366,21 @@ cursor:pointer;
 
 /* TABLET */
 
-@media (max-width:900px){
+@media(max-width:900px){
 
 .hero{
-flex-direction:column;
-text-align:center;
-padding:80px 6%;
+padding:110px 6%;
 }
 
 .hero h1{
-font-size:40px;
-}
-
-.hero-text{
-max-width:100%;
-}
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
+font-size:42px;
 }
 
 }
 
 /* MOBILE */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
 header{
 padding:20px 6%;
@@ -398,7 +412,7 @@ display:block;
 }
 
 .hero{
-padding:70px 6%;
+padding:90px 6%;
 }
 
 .hero h1{
@@ -409,32 +423,14 @@ font-size:34px;
 font-size:16px;
 }
 
-.services{
-padding:70px 6%;
-}
-
-.portfolio{
-padding:70px 6%;
-}
-
+.services,
+.portfolio,
 .testimonials{
-padding:70px 6%;
-}
-
-.cta-section{
 padding:80px 6%;
 }
 
-.service-grid{
-grid-template-columns:1fr;
-}
-
-.port-grid{
-grid-template-columns:1fr;
-}
-
-.test-grid{
-grid-template-columns:1fr;
+.cta-section{
+padding:90px 6%;
 }
 
 .footer-grid{
@@ -448,41 +444,7 @@ gap:25px;
 
 }
 
-/* SMALL PHONES */
-
-@media (max-width:480px){
-
-.hero h1{
-font-size:28px;
-}
-
-.cta{
-padding:10px 18px;
-font-size:14px;
-}
-.cta:hover{
-background:#1d4ed8;
-box-shadow:0 10px 25px rgba(37,99,235,0.35);
-}
-
-.secondary-btn:hover{
-border-color:#2563eb;
-color:#2563eb;
-}
-
-.secondary-btn{
-padding:10px 18px;
-font-size:14px;
-}
-.project-link{
-text-decoration:none;
-color:inherit;
-display:block;
-}
-
-
 </style>
-
 </head>
 
 <body>
@@ -504,7 +466,6 @@ display:block;
 
 </header>
 
-
 <section class="hero">
 
 <div class="hero-text">
@@ -520,7 +481,6 @@ into customers.
 <div class="hero-buttons">
 
 <a class="cta" href="contact.html">Start Your Project</a>
-
 <a class="secondary-btn" href="work.html">View Our Work</a>
 
 </div>
@@ -529,24 +489,18 @@ into customers.
 
 </section>
 
-</section>
-
-
 <section class="trust">
 
 <p>Trusted by growing businesses worldwide</p>
 
 <div class="logos">
-
 <span>Company</span>
 <span>Startup</span>
 <span>Enterprise</span>
 <span>Brand</span>
-
 </div>
 
 </section>
-
 
 <section class="services">
 
@@ -578,57 +532,30 @@ into customers.
 
 </section>
 
-
 <section class="portfolio">
 
 <h2>Our Work</h2>
 
 <div class="port-grid">
 
-<a href="st.html" class="project-link">
+<div class="project">
+<img src="project1.jpg">
+<div class="project-info"><h3>ST Auto Styling</h3></div>
+</div>
 
 <div class="project">
-
-<img src="project1.jpg" alt="ST Auto Styling">
-
-<div class="project-info">
-<h3>ST Auto Styling</h3>
+<img src="project2.jpg">
+<div class="project-info"><h3>Precision Valet</h3></div>
 </div>
-
-</div>
-
-</a>
-
-<a href="pv.html" class="project-link">
 
 <div class="project">
-
-<img src="project2.jpg" alt="Precision Valet">
-
-<div class="project-info">
-<h3>Precision Valet</h3>
+<img src="project3.jpg">
+<div class="project-info"><h3>Chriswoo Music Events</h3></div>
 </div>
 
 </div>
-
-</a>
-
-<a href="kris.html" class="project-link">
-
-<div class="project">
-
-<img src="project3.jpg" alt="Chriswoo Music Events">
-
-<div class="project-info">
-<h3>Chriswoo Music Events</h3>
-</div>
-
-</div>
-
-</a>
 
 </section>
-
 
 <section class="testimonials">
 
@@ -637,25 +564,19 @@ into customers.
 <div class="test-grid">
 
 <div class="test">
-<p>
-"Incredible work. Our website completely transformed our business."
-</p>
+<p>"Incredible work. Our website completely transformed our business."</p>
 <br>
 <strong>Sarah Williams</strong>
 </div>
 
 <div class="test">
-<p>
-"Professional, fast, and the results exceeded expectations."
-</p>
+<p>"Professional, fast, and the results exceeded expectations."</p>
 <br>
 <strong>David Morgan</strong>
 </div>
 
 <div class="test">
-<p>
-"They built us a website that actually generates customers."
-</p>
+<p>"They built us a website that actually generates customers."</p>
 <br>
 <strong>Michael Turner</strong>
 </div>
@@ -664,19 +585,15 @@ into customers.
 
 </section>
 
-
 <section class="cta-section">
 
 <h2>Ready to Grow Your Business?</h2>
 
 <p>Let's build something great together.</p>
 
-<br>
-
 <a href="#">Start Your Project</a>
 
 </section>
-
 
 <footer>
 
@@ -698,7 +615,7 @@ into customers.
 <h4>Company</h4>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
-<a href="careers.html">Careers</a>
+<a href="#">Careers</a>
 </div>
 
 <div>
@@ -711,12 +628,11 @@ into customers.
 </div>
 
 <div class="bottom">
-
 © 2026 Business Pal. All rights reserved.
-
 </div>
 
 </footer>
+
 <script>
 
 function toggleMenu(){
@@ -728,6 +644,7 @@ nav.classList.toggle("active");
 
 </body>
 </html>
+
 
 
 
