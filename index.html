@@ -87,17 +87,22 @@ margin-left:20px;
 /* HERO */
 
 .hero{
-padding:120px 8%;
+padding:130px 8%;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
 flex-wrap:wrap;
-background:linear-gradient(180deg,#ffffff 0%,#f1f5ff 100%);
-border-bottom:1px solid #e5e7eb;
+}
+.hero{
+background:
+radial-gradient(circle at 20% 30%, #2563eb15, transparent 40%),
+radial-gradient(circle at 80% 70%, #3b82f615, transparent 40%),
+linear-gradient(180deg,#ffffff,#f8fafc);
 }
 
 .hero-text{
-max-width:560px;
+max-width:540px;
 }
 
 .hero h1{
